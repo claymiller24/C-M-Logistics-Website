@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Developer at computer illustration">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#0f172a" rx="8"/>
+  <g transform="translate(80,80)">
+    <rect x="0" y="0" width="460" height="360" rx="12" fill="#0b1220" stroke="#12203a" stroke-width="2"/>
+    <rect x="16" y="18" width="428" height="28" rx="6" fill="#071028"/>
+    <g transform="translate(24,64)">
+      <rect width="392" height="238" rx="8" fill="#021427"/>
+      <g font-family="Inter, Arial, sans-serif" font-size="18" fill="#dbeafe">
+        <text x="16" y="36">&lt;!DOCTYPE html&gt;</text>
+        <text x="16" y="64" fill="#9ae6b4">&lt;html lang="en"&gt;</text>
+        <text x="32" y="92" fill="#93c5fd">&lt;head&gt;</text>
+        <text x="48" y="120" fill="#eab308">&lt;meta charset="utf-8" /&gt;</text>
+        <text x="48" y="148" fill="#fca5a5">&lt;title&gt;C&amp;M Logistics™&lt;/title&gt;</text>
+        <text x="32" y="176" fill="#93c5fd">&lt;/head&gt;</text>
+        <text x="16" y="204" fill="#a78bfa">&lt;body&gt;</text>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(620,140)">
+    <circle cx="120" cy="80" r="80" fill="url(#g)" opacity="0.95" />
+    <rect x="40" y="180" width="220" height="36" rx="18" fill="#fff" opacity="0.06"/>
+    <g transform="translate(46,44)" font-family="Inter, Arial, sans-serif" fill="#fff" opacity="0.95">
+      <text x="0" y="18" font-size="22" font-weight="600">C&amp;M Logistics™</text>
+      <text x="0" y="44" font-size="14" opacity="0.9">Professional Python & Web Development</text>
+    </g>
+  </g>
+</svg>
