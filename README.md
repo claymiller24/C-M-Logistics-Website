@@ -1,5 +1,5 @@
 
-# C&M Logistics — Full-Stack Python & Web Development
+# C&M Logistics™ — Full-Stack Python & Web Development
 
 Modern static website for C&M Logistics showcasing Python and web development services. Features a responsive design with glass morphism effects, project showcase, and a working contact form with Netlify Forms integration.
 
