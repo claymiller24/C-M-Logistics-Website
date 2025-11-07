@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Demo poster">
+  <rect width="100%" height="100%" fill="#071127" />
+  <g transform="translate(60,60)" font-family="Inter, Arial, sans-serif" fill="#fff">
+    <text x="0" y="40" font-size="28" font-weight="700" fill="#7dd3fc">C&amp;M Logistics™ — Demo</text>
+    <text x="0" y="80" font-size="18" fill="#93c5fd">Short demo: coding, editor, and terminal walkthrough</text>
+    <rect x="0" y="120" width="1160" height="520" rx="12" fill="#021427" />
+    <text x="40" y="200" font-size="16" fill="#9ae6b4">▶ 00:00:03 — Introduction</text>
+    <text x="40" y="230" font-size="16" fill="#93c5fd">▶ 00:00:10 — Editor + Code</text>
+    <text x="40" y="260" font-size="16" fill="#fcd34d">▶ 00:00:30 — Live demo</text>
+  </g>
+</svg>

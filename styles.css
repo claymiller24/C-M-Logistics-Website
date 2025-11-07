@@ -23,6 +23,21 @@ body{margin:0;font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;background:l
 .hero h2{font-size:2rem;margin:0 0 .5rem}
 .lead{color:var(--muted);max-width:60ch}
 .cta{display:inline-block;background:var(--accent);color:#012018;padding:.6rem 1rem;border-radius:8px;text-decoration:none;font-weight:600}
+
+/* Hero media (moved from inline styles) */
+.hero-media{margin-top:18px;display:flex;justify-content:center}
+.hero-media img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 8px 30px rgba(2,6,23,0.6);display:block}
+
+/* Project thumbnails and grid helpers */
+.project .project-thumb{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:.75rem;display:block}
+.project .project-thumb.small{height:110px}
+
+/* Demo video block */
+.video-demo{margin-top:1rem;display:flex;justify-content:center}
+.video-demo video{max-width:100%;border-radius:8px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+
+/* Card variant for embedded media */
+.card.video-card{max-width:960px;width:100%}
 .services{padding:2rem 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
 .card{

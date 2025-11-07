@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Project thumbnail 3">
+  <rect width="100%" height="100%" fill="#071127" rx="8" />
+  <g transform="translate(28,28)" font-family="Inter, Arial, sans-serif">
+    <rect x="0" y="0" width="744" height="394" rx="6" fill="#061626" />
+    <text x="32" y="56" fill="#fb7185" font-size="22" font-weight="700">Route Optimization</text>
+    <text x="32" y="96" fill="#93c5fd">Optimization • NumPy • Maps</text>
+  </g>
+</svg>
