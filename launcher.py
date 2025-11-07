@@ -9,6 +9,7 @@ import socketserver
 import webbrowser
 import sys
 import os
+import errno
 
 PORT = 8000
 
@@ -40,7 +41,7 @@ def main():
         print("\n\nServer stopped.")
         sys.exit(0)
     except OSError as e:
-        if e.errno == 98:
+        if e.errno == errno.EADDRINUSE:
             print(f"\nError: Port {PORT} is already in use.")
             print("Please close any other applications using this port or use a different port.")
             sys.exit(1)
