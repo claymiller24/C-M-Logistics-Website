@@ -1,5 +1,5 @@
 # C-M-Logistics-Website
-My website that showcases my new programming company.
+Professional website for C&M Logistics - a transportation and logistics company.
 
 ## Features
 
