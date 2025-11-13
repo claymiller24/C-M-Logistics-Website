@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f1624" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="NCM Solutions" />
+    <title>Projects — NCM Solutions™</title>
+    <meta name="description" content="Recent projects: inventory system, client portal, and route optimization." />
+    <meta property="og:title" content="Projects — NCM Solutions" />
+    <meta property="og:description" content="Recent projects: inventory system, client portal, and route optimization." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cm-logistics.net/projects.html" />
+    <meta property="og:image" content="https://cm-logistics.net/assets/media/coding-workspace.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Projects — NCM Solutions" />
+    <meta name="twitter:description" content="Recent projects: inventory system, client portal, and route optimization." />
+    <meta name="twitter:image" content="https://cm-logistics.net/assets/media/coding-workspace.jpg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/app-icon-180.png" />
+    <link rel="canonical" href="https://cm-logistics.net/projects.html" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
+    <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#0f1624" />
+    <link rel="preload" href="/styles.min.css" as="style" />
+    <link rel="stylesheet" href="/styles.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <a href="/"><img src="/assets/logo.svg" alt="NCM Solutions™" width="200" height="50" /></a>
+        </div>
+        <nav class="nav">
+          <a href="/">Home</a>
+          <a href="/services.html">Services</a>
+          <a href="/projects.html" aria-current="page">Projects</a>
+          <a href="/portfolio.html">Portfolio</a>
+          <a href="/tech.html">Tech</a>
+          <a href="/process.html">Process</a>
+          <a href="/about.html">About</a>
+          <a href="/testimonials.html">Testimonials</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="container projects">
+        <h2>Recent Projects</h2>
+        <div class="grid">
+          <div class="card project">
+            <img class="project-thumb" src="/assets/media/code-screen.jpg" alt="Inventory Management System code" loading="lazy" />
+            <h4>Inventory Management System</h4>
+            <p>Custom Python/Django application for tracking product inventory, orders, and shipping status. Features real-time updates and reporting.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Django</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+            <p class="mt-1-5"><a class="btn btn-outline" href="/portfolio.html#inventory">Read case study</a></p>
+          </div>
+          <div class="card project">
+            <img class="project-thumb" src="/assets/media/developer-desk.jpg" alt="Developer workspace" loading="lazy" />
+            <h4>Client Portal</h4>
+            <p>Secure web portal allowing clients to track shipments, view documentation, and manage their account. Built with modern JavaScript and a Python API.</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Redis</span>
+            </div>
+            <p class="mt-1-5"><a class="btn btn-outline" href="/portfolio.html#client-portal">Read case study</a></p>
+          </div>
+          <div class="card project">
+            <img class="project-thumb" src="/assets/media/laptop-code.jpg" alt="Coding on laptop" loading="lazy" />
+            <h4>Route Optimization</h4>
+            <p>Algorithm-driven delivery route planner that considers traffic, vehicle capacity, and time windows. Reduces fuel costs and improves delivery times.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">Maps API</span>
+            </div>
+            <p class="mt-1-5"><a class="btn btn-outline" href="/portfolio.html#route-optimization">Read case study</a></p>
+          </div>
+        </div>
+
+        <div class="video-demo">
+          <div class="card video-card" id="videoContainer">
+            <h4>Demo: Coding walkthrough</h4>
+            <p id="videoBlurb">Short demo video showing editor, terminal, and app in action. Replace <code>/assets/media/demo.mp4</code> with your recorded MP4.</p>
+          </div>
+        </div>
+
+        <div class="coding-showcase">
+          <div class="grid">
+            <div class="card">
+              <img src="/assets/media/code-screen.jpg" alt="Clean code on screen" loading="lazy" />
+              <p>Clean, maintainable code</p>
+            </div>
+            <div class="card">
+              <img src="/assets/media/developer-desk.jpg" alt="Professional development environment" loading="lazy" />
+              <p>Professional workspace setup</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> NCM Solutions™ — Full-stack Python & Web Development</p>
+      </div>
+    </footer>
+
+    <script defer src="/script.min.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function(){
+          navigator.serviceWorker.register('/sw.js').catch(function(){});
+        });
+      }
+    </script>
+    <script>
+      (function(){
+        var deferredPrompt=null;function addBtn(){if(!document.body){window.addEventListener('DOMContentLoaded',addBtn,{once:true});return;}var b=document.createElement('button');b.textContent='Install App';b.setAttribute('aria-label','Install this app');b.style.position='fixed';b.style.bottom='16px';b.style.right='16px';b.style.zIndex='10000';b.style.padding='10px 14px';b.style.background='#0f1624';b.style.color='#fff';b.style.border='none';b.style.borderRadius='6px';b.style.boxShadow='0 2px 6px rgba(0,0,0,.2)';b.style.cursor='pointer';b.addEventListener('click',function(){if(!deferredPrompt)return;b.disabled=true;deferredPrompt.prompt();deferredPrompt.userChoice.finally(function(){b.remove();deferredPrompt=null;});});document.body.appendChild(b);}window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferredPrompt=e;addBtn();});
+      })();
+    </script>
+    <script>
+      (function(){
+        const container = document.getElementById('videoContainer');
+        if(!container) return;
+        const demoUrl = '/assets/media/demo.mp4';
+        function showFallback(){
+          const poster = document.createElement('img');
+          poster.src = '/assets/media/poster.jpg';
+          poster.alt = 'Demo poster';
+          poster.style.maxWidth = '100%';
+          poster.style.borderRadius = '8px';
+          poster.loading = 'lazy';
+          const p = document.getElementById('videoBlurb');
+          if(p) p.textContent = 'Demo video not found. You can record a short demo and place it at /assets/media/demo.mp4';
+          const link = document.createElement('a');
+          link.href = demoUrl;
+          link.textContent = 'Download demo (if available)';
+          link.style.display = 'inline-block';
+          link.style.marginTop = '0.5rem';
+          const holder = document.createElement('div');
+          holder.appendChild(poster);
+          holder.appendChild(link);
+          while(container.firstChild) container.removeChild(container.firstChild);
+          container.appendChild(document.createElement('h4')).textContent = 'Demo: Coding walkthrough';
+          container.appendChild(holder);
+        }
+        fetch(demoUrl, {method: 'HEAD'}).then(function(resp){
+          if(resp.ok){
+            const video = document.createElement('video');
+            video.controls = true;
+            video.poster = '/assets/media/poster.jpg';
+            video.style.maxWidth = '100%';
+            const src = document.createElement('source');
+            src.src = demoUrl;
+            src.type = 'video/mp4';
+            video.appendChild(src);
+            while(container.firstChild) container.removeChild(container.firstChild);
+            container.appendChild(document.createElement('h4')).textContent = 'Demo: Coding walkthrough';
+            const p = document.createElement('p');
+            p.textContent = 'Short demo video showing editor, terminal, and app in action.';
+            container.appendChild(p);
+            container.appendChild(video);
+          } else {
+            showFallback();
+          }
+        }).catch(function(){
+          fetch(demoUrl, {method: 'GET', headers:{Range: 'bytes=0-1'}}).then(function(r2){
+            if(r2.ok) {
+              const video = document.createElement('video');
+              video.controls = true;
+              video.poster = '/assets/media/poster.jpg';
+              video.style.maxWidth = '100%';
+              const src = document.createElement('source');
+              src.src = demoUrl;
+              src.type = 'video/mp4';
+              video.appendChild(src);
+              while(container.firstChild) container.removeChild(container.firstChild);
+              container.appendChild(document.createElement('h4')).textContent = 'Demo: Coding walkthrough';
+              const p = document.createElement('p');
+              p.textContent = 'Short demo video showing editor, terminal, and app in action.';
+              container.appendChild(p);
+              container.appendChild(video);
+            } else {
+              showFallback();
+            }
+          }).catch(showFallback);
+        });
+      })();
+    </script>
+  </body>
+</html>

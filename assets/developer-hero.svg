@@ -17,7 +17,7 @@
         <text x="16" y="64" fill="#9ae6b4">&lt;html lang="en"&gt;</text>
         <text x="32" y="92" fill="#93c5fd">&lt;head&gt;</text>
         <text x="48" y="120" fill="#eab308">&lt;meta charset="utf-8" /&gt;</text>
-        <text x="48" y="148" fill="#fca5a5">&lt;title&gt;C&amp;M Logistics™&lt;/title&gt;</text>
+        <text x="48" y="148" fill="#fca5a5">&lt;title&gt;NCM Solutions™&lt;/title&gt;</text>
         <text x="32" y="176" fill="#93c5fd">&lt;/head&gt;</text>
         <text x="16" y="204" fill="#a78bfa">&lt;body&gt;</text>
       </g>
@@ -28,7 +28,7 @@
     <circle cx="120" cy="80" r="80" fill="url(#g)" opacity="0.95" />
     <rect x="40" y="180" width="220" height="36" rx="18" fill="#fff" opacity="0.06"/>
     <g transform="translate(46,44)" font-family="Inter, Arial, sans-serif" fill="#fff" opacity="0.95">
-      <text x="0" y="18" font-size="22" font-weight="600">C&amp;M Logistics™</text>
+      <text x="0" y="18" font-size="22" font-weight="600">NCM Solutions™</text>
       <text x="0" y="44" font-size="14" opacity="0.9">Professional Python & Web Development</text>
     </g>
   </g>

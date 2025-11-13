@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="96" fill="#000"/>
+  <g transform="translate(96,96) scale(2.2)" fill="#000">
+    <!-- Outline by hole to produce proper mask; WebKit uses alpha -->
+  </g>
+  <!-- Simple mono mark: hollow rounded square to create alpha shape -->
+  <rect x="64" y="64" width="384" height="384" rx="64" fill="#000"/>
+  <!-- NCM letters cutout (transparent) using white then convert-to-mask alpha -->
+  <g fill="#fff" transform="translate(110,300)">
+    <path d="M0 0 V-140 H24 L96 -24 V-140 H128 V0 H104 L32 -116 V0 Z"/>
+    <path d="M176 0 V-140 H208 L280 -20 V-140 H312 V0 H280 L208 -120 V0 Z"/>
+    <path d="M360 0 V-140 H392 V0 Z"/>
+  </g>
+</svg>

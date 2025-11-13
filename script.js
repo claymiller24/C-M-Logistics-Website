@@ -30,3 +30,53 @@ document.addEventListener('DOMContentLoaded', function(){
     window.location.href = mailto;
   });
 });
+
+// Register Service Worker for offline support and install prompts
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('/sw.js').catch(function(err){
+      // no-op: SW registration failed (likely local file or unsupported)
+    });
+  });
+}
+
+// Lightweight PWA install button when supported
+(function(){
+  let deferredPrompt = null;
+  function addInstallButton(){
+    if (!document.body) {
+      window.addEventListener('DOMContentLoaded', addInstallButton, { once: true });
+      return;
+    }
+    const btn = document.createElement('button');
+    btn.textContent = 'Install App';
+    btn.setAttribute('aria-label', 'Install this app');
+    btn.style.position = 'fixed';
+    btn.style.bottom = '16px';
+    btn.style.right = '16px';
+    btn.style.zIndex = '10000';
+    btn.style.padding = '10px 14px';
+    btn.style.background = '#0f1624';
+    btn.style.color = '#fff';
+    btn.style.border = 'none';
+    btn.style.borderRadius = '6px';
+    btn.style.boxShadow = '0 2px 6px rgba(0,0,0,.2)';
+    btn.style.cursor = 'pointer';
+    btn.addEventListener('click', function(){
+      if (!deferredPrompt) return;
+      btn.disabled = true;
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.finally(function(){
+        btn.remove();
+        deferredPrompt = null;
+      });
+    });
+    document.body.appendChild(btn);
+  }
+
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault();
+    deferredPrompt = e;
+    addInstallButton();
+  });
+})();

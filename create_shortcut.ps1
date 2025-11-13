@@ -3,6 +3,12 @@ $scriptPath = $PSScriptRoot
 $desktopPath = [System.Environment]::GetFolderPath("Desktop")
 $websitePath = Join-Path $scriptPath "launch_website.bat"
 $iconPath = Join-Path $scriptPath "assets\favicon.ico"
+$appIconSvg = Join-Path $scriptPath "assets\icons\app-icon.svg"
+$appIconPng = Join-Path $scriptPath "assets\icons\app-icon-180.png"
+${fav32} = Join-Path $scriptPath "assets\icons\favicon-32x32.png"
+${fav16} = Join-Path $scriptPath "assets\icons\favicon-16x16.png"
+${icon192} = Join-Path $scriptPath "assets\icons\app-icon-192.png"
+${icon512} = Join-Path $scriptPath "assets\icons\app-icon-512.png"
 
 # Check if Python is installed
 if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
@@ -23,11 +29,40 @@ if (-not (Test-Path $iconPath)) {
     }
 }
 
+# Generate app icon PNG (180x180) from SVG if available
+try {
+    if (Test-Path $appIconSvg) {
+        if (-not (Test-Path $appIconPng)) {
+            Write-Host "Generating app-icon-180.png from SVG..."
+            $null = New-Item -ItemType Directory -Force -Path (Split-Path $appIconPng)
+            magick convert $appIconSvg -background none -resize 180x180 $appIconPng
+        }
+        if (-not (Test-Path ${icon192})) {
+            Write-Host "Generating app-icon-192.png..."
+            magick convert $appIconSvg -background none -resize 192x192 ${icon192}
+        }
+        if (-not (Test-Path ${icon512})) {
+            Write-Host "Generating app-icon-512.png..."
+            magick convert $appIconSvg -background none -resize 512x512 ${icon512}
+        }
+        if (-not (Test-Path ${fav32})) {
+            Write-Host "Generating favicon-32x32.png..."
+            magick convert $appIconSvg -background none -resize 32x32 ${fav32}
+        }
+        if (-not (Test-Path ${fav16})) {
+            Write-Host "Generating favicon-16x16.png..."
+            magick convert $appIconSvg -background none -resize 16x16 ${fav16}
+        }
+    }
+} catch {
+    Write-Host "ImageMagick not available or conversion failed. Using existing icons." -ForegroundColor Yellow
+}
+
 # Create shortcut
-$shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$desktopPath\C&M Logistics Website.lnk")
+$shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut("$desktopPath\NCM Solutions Website.lnk")
 $shortcut.TargetPath = $websitePath
 $shortcut.IconLocation = $iconPath
 $shortcut.WorkingDirectory = "C:\Users\claym\OneDrive\New Website"
 $shortcut.Save()
 
-Write-Host "Desktop shortcut created! You can now launch the website by double-clicking 'C&M Logistics Website' on your desktop."
+Write-Host "Desktop shortcut created! You can now launch the website by double-clicking 'NCM Solutions Website' on your desktop."

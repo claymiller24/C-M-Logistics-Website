@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="NCM Solutions app icon">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="180" height="180" rx="32" fill="#0f172a"/>
+  <rect x="6" y="6" width="168" height="168" rx="28" fill="url(#g)" opacity="0.18"/>
+  <g fill="#e6eef6" font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <text x="90" y="106" font-size="58" font-weight="700" letter-spacing="1">NCM</text>
+  </g>
+</svg>

@@ -43,7 +43,15 @@ Accessibility and performance tips:
 - Provide descriptive `alt` text for images and captions for videos.
 
 If you'd like, I can:
+
 - Create a short demo video for you (screen recordings require you to grant/upload footage — I can provide a script to stitch clips together using FFmpeg), or
 - Generate additional SVG banners and thumbnails and wire them into the site right now.
 
 Tell me which option you prefer and I’ll continue.
+
+## Note about the demo video used on the site
+
+The homepage includes a demo player that points to `/assets/media/demo.mp4` and uses `poster.svg` as a poster.
+If you haven't added a `demo.mp4` file to this folder the site will show a poster image and a small download link instead.
+
+To add a demo video, place an MP4 named `demo.mp4` in this folder (H.264 video, AAC audio is widely compatible). Example FFmpeg command is included above.

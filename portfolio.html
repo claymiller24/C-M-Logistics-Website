@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f1624" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="NCM Solutions" />
+    <title>Portfolio — NCM Solutions™</title>
+    <meta name="description" content="Detailed case studies showcasing delivered results and impact." />
+    <meta property="og:title" content="Portfolio — NCM Solutions" />
+    <meta property="og:description" content="Detailed case studies showcasing delivered results and impact." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cm-logistics.net/portfolio.html" />
+    <meta property="og:image" content="https://cm-logistics.net/assets/media/coding-workspace.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Portfolio — NCM Solutions" />
+    <meta name="twitter:description" content="Detailed case studies showcasing delivered results and impact." />
+    <meta name="twitter:image" content="https://cm-logistics.net/assets/media/coding-workspace.jpg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/app-icon-180.png" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
+    <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#0f1624" />
+    <link rel="preload" href="/styles.min.css" as="style" />
+    <link rel="stylesheet" href="/styles.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "NCM Solutions Portfolio",
+      "url": "https://cm-logistics.net/portfolio.html",
+      "hasPart": [
+        {
+          "@type": "CreativeWork",
+          "name": "Inventory Management System",
+          "url": "https://cm-logistics.net/portfolio.html#inventory",
+          "image": [
+            "https://cm-logistics.net/assets/media/code-screen.jpg",
+            "https://cm-logistics.net/assets/media/developer-desk.jpg",
+            "https://cm-logistics.net/assets/media/laptop-code.jpg"
+          ],
+          "description": "Django + PostgreSQL app with real-time stock tracking and low-inventory alerts.",
+          "keywords": ["Python","Django","PostgreSQL","Inventory"]
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Client Portal",
+          "url": "https://cm-logistics.net/portfolio.html#client-portal",
+          "image": [
+            "https://cm-logistics.net/assets/media/developer-desk.jpg",
+            "https://cm-logistics.net/assets/media/code-screen.jpg"
+          ],
+          "description": "React + FastAPI with JWT, rate limiting, and Redis caching.",
+          "keywords": ["React","FastAPI","Redis","Portal"]
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Route Optimization",
+          "url": "https://cm-logistics.net/portfolio.html#route-optimization",
+          "image": [
+            "https://cm-logistics.net/assets/media/laptop-code.jpg",
+            "https://cm-logistics.net/assets/media/code-screen.jpg"
+          ],
+          "description": "Algorithmic planner factoring traffic, capacity, and delivery windows.",
+          "keywords": ["Python","NumPy","Maps API","Optimization"]
+        }
+      ]
+    }
+    </script>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <a href="/"><img src="/assets/logo.svg" alt="NCM Solutions™" width="200" height="50" /></a>
+        </div>
+        <nav class="nav">
+          <a href="/">Home</a>
+          <a href="/services.html">Services</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/portfolio.html" aria-current="page">Portfolio</a>
+          <a href="/tech.html">Tech</a>
+          <a href="/process.html">Process</a>
+          <a href="/about.html">About</a>
+          <a href="/testimonials.html">Testimonials</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="container projects">
+        <h2>Case Studies</h2>
+
+        <article id="inventory" class="card project mt-1-5">
+          <img class="project-thumb" src="/assets/media/code-screen.jpg" alt="Inventory Management System code" loading="lazy" />
+          <h3>Inventory Management System</h3>
+          <p><strong>Challenge:</strong> Disparate spreadsheets led to stockouts and manual reconciliation.</p>
+          <p><strong>Solution:</strong> Built a Django + PostgreSQL app with real-time stock tracking, low-inventory alerts, and role-based access.</p>
+          <p><strong>Impact:</strong> 99.5% inventory accuracy; reduced reconciliation time from hours to minutes.</p>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">PostgreSQL</span>
+          </div>
+          <div class="gallery">
+            <img src="/assets/media/code-screen.jpg" alt="Inventory app code" loading="lazy" />
+            <img src="/assets/media/developer-desk.jpg" alt="Team workspace" loading="lazy" />
+            <img src="/assets/media/laptop-code.jpg" alt="Feature implementation" loading="lazy" />
+          </div>
+          <div class="btn-row">
+            <a class="btn" href="/contact.html?subject=Interested%20in%20Inventory%20Management%20case%20study">Start a similar project</a>
+            <a class="btn btn-outline" href="https://github.com/claymiller24" target="_blank" rel="noopener">View GitHub</a>
+            <a class="btn btn-outline" href="mailto:millerclay46@gmail.com?subject=Request%20PDF%20Case%20Study%20-%20Inventory%20Management">Request PDF</a>
+          </div>
+        </article>
+
+        <article id="client-portal" class="card project mt-1-5">
+          <img class="project-thumb" src="/assets/media/developer-desk.jpg" alt="Developer workspace for Client Portal" loading="lazy" />
+          <h3>Client Portal</h3>
+          <p><strong>Challenge:</strong> Customers lacked a self-serve interface for shipment visibility and docs.</p>
+          <p><strong>Solution:</strong> React frontend backed by FastAPI with JWT auth, rate-limited endpoints, and Redis caching.</p>
+          <p><strong>Impact:</strong> Cut support tickets by 45%; page loads under 300ms via caching.</p>
+          <div class="tags">
+            <span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">Redis</span>
+          </div>
+          <div class="gallery">
+            <img src="/assets/media/developer-desk.jpg" alt="Portal development environment" loading="lazy" />
+            <img src="/assets/media/code-screen.jpg" alt="API code" loading="lazy" />
+          </div>
+          <div class="btn-row">
+            <a class="btn" href="/contact.html?subject=Interested%20in%20Client%20Portal%20case%20study">Start a similar project</a>
+            <a class="btn btn-outline" href="https://github.com/claymiller24" target="_blank" rel="noopener">View GitHub</a>
+            <a class="btn btn-outline" href="mailto:millerclay46@gmail.com?subject=Request%20PDF%20Case%20Study%20-%20Client%20Portal">Request PDF</a>
+          </div>
+        </article>
+
+        <article id="route-optimization" class="card project mt-1-5">
+          <img class="project-thumb" src="/assets/media/laptop-code.jpg" alt="Route Optimization" loading="lazy" />
+          <h3>Route Optimization</h3>
+          <p><strong>Challenge:</strong> Inefficient routes increased fuel costs and delayed deliveries.</p>
+          <p><strong>Solution:</strong> Implemented an algorithmic planner considering traffic, capacity, and delivery windows.</p>
+          <p><strong>Impact:</strong> 30% reduction in fuel costs and improved on-time delivery rate.</p>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">Maps API</span>
+          </div>
+          <div class="gallery">
+            <img src="/assets/media/laptop-code.jpg" alt="Optimization code" loading="lazy" />
+            <img src="/assets/media/code-screen.jpg" alt="Planner module" loading="lazy" />
+          </div>
+          <div class="btn-row">
+            <a class="btn" href="/contact.html?subject=Interested%20in%20Route%20Optimization%20case%20study">Start a similar project</a>
+            <a class="btn btn-outline" href="https://github.com/claymiller24" target="_blank" rel="noopener">View GitHub</a>
+            <a class="btn btn-outline" href="mailto:millerclay46@gmail.com?subject=Request%20PDF%20Case%20Study%20-%20Route%20Optimization">Request PDF</a>
+          </div>
+        </article>
+
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> NCM Solutions&trade; — Full-stack Python &amp; Web Development</p>
+      </div>
+    </footer>
+
+    <script defer src="/script.min.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function(){
+          navigator.serviceWorker.register('/sw.js').catch(function(){});
+        });
+      }
+    </script>
+    <script>
+      (function(){
+        var deferredPrompt=null;function addBtn(){if(!document.body){window.addEventListener('DOMContentLoaded',addBtn,{once:true});return;}var b=document.createElement('button');b.textContent='Install App';b.setAttribute('aria-label','Install this app');b.style.position='fixed';b.style.bottom='16px';b.style.right='16px';b.style.zIndex='10000';b.style.padding='10px 14px';b.style.background='#0f1624';b.style.color='#fff';b.style.border='none';b.style.borderRadius='6px';b.style.boxShadow='0 2px 6px rgba(0,0,0,.2)';b.style.cursor='pointer';b.addEventListener('click',function(){if(!deferredPrompt)return;b.disabled=true;deferredPrompt.prompt();deferredPrompt.userChoice.finally(function(){b.remove();deferredPrompt=null;});});document.body.appendChild(b);}window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferredPrompt=e;addBtn();});
+      })();
+    </script>
+  </body>
+</html>

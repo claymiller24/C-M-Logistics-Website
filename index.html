@@ -2,18 +2,24 @@
 <html lang="en">
     <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>C&amp;M Logistics&trade; — Full-Stack Python &amp; Web Development</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f1624" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="NCM Solutions" />
+    <title>NCM Solutions&trade; — Full-Stack Python &amp; Web Development</title>
     <meta name="description" content="Python and web development services: custom web apps, APIs, databases, and responsive UI development. Get in touch to start your project." />
     
     <!-- Open Graph -->
-  <meta property="og:title" content="C&amp;M Logistics&trade; — Full-Stack Python &amp; Web Development" />
+  <meta property="og:title" content="NCM Solutions&trade; — Full-Stack Python &amp; Web Development" />
     <meta property="og:description" content="Python and web development services: custom web apps, APIs, databases, and responsive UI development." />
     <meta property="og:image" content="/assets/og-image.svg" />
     <meta property="og:type" content="website" />
     
   <!-- Icons -->
   <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
+  <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#0f1624" />
     
   <!-- Styles (production) -->
   <link rel="preload" href="styles.min.css" as="style" />
@@ -21,20 +27,35 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+     <link rel="canonical" href="https://cm-logistics.net/" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/app-icon-180.png" />
   </head>
   <body>
     <header class="site-header">
       <div class="container header-inner">
         <div class="brand">
-          <img src="/assets/logo.svg" alt="C&amp;M Logistics&trade;" width="200" height="50" />
+    <meta property="og:title" content="NCM Solutions — Python & Web Development" />
+    <meta property="og:description" content="Full‑stack Python & web development: APIs, dashboards, automation, and modern frontends." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cm-logistics.net/" />
+    <meta property="og:image" content="https://cm-logistics.net/assets/media/coding-workspace.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NCM Solutions — Python & Web Development" />
+    <meta name="twitter:description" content="Full‑stack Python & web development: APIs, dashboards, automation, and modern frontends." />
+    <meta name="twitter:image" content="https://cm-logistics.net/assets/media/coding-workspace.jpg" />
+          <img src="/assets/logo.svg" alt="NCM Solutions&trade;" width="200" height="50" />
         </div>
         <nav class="nav">
-          <a href="#home">Home</a>
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#tech">Tech</a>
-          <a href="#process">Process</a>
-          <a href="#contact">Contact</a>
+          <a href="/" aria-current="page">Home</a>
+          <a href="/services.html">Services</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/portfolio.html">Portfolio</a>
+          <a href="/tech.html">Tech</a>
+          <a href="/process.html">Process</a>
+          <a href="/about.html">About</a>
+          <a href="/testimonials.html">Testimonials</a>
+          <a href="/contact.html">Contact</a>
         </nav>
       </div>
     </header>
@@ -44,217 +65,48 @@
         <div class="container">
           <h2>Professional Python & Web Development</h2>
           <p class="lead">I build modern, reliable websites and web apps — front-end, back-end, and everything in between.</p>
-          <p><a class="cta" href="#contact">Start a project</a></p>
+          <p><a class="cta" href="/contact.html">Start a project</a></p>
           <!-- Hero illustration -->
-          <div class="hero-media" style="margin-top:18px;">
-            <img src="/assets/developer-hero.svg" alt="Developer illustration" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 8px 30px rgba(2,6,23,0.6);" loading="lazy" />
+          <div class="hero-media">
+            <img src="/assets/media/coding-workspace.jpg" alt="Modern coding workspace with multiple monitors" class="developer-hero-img" loading="lazy" width="960" height="540" />
           </div>
         </div>
-      </section>
-
-      <section id="services" class="container services">
-        <h3>Services</h3>
-        <div class="grid">
-          <div class="card">
-            <h4>Python Development</h4>
-            <p>Clean, testable Python code for automation, web backends, data processing, and APIs.</p>
-          </div>
-          <div class="card">
-            <h4>Backend / APIs</h4>
-            <p>REST or GraphQL APIs, database design, authentication, and deployable server code.</p>
-          </div>
-          <div class="card">
-            <h4>Frontend</h4>
-            <p>Responsive, accessible UI using modern HTML/CSS and JS frameworks when appropriate.</p>
-          </div>
-          <div class="card">
-            <h4>Full-Stack Projects</h4>
-            <p>End-to-end app development: design, implementation, testing and deployment.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="container about">
-        <h3>About — Full‑Stack Developer</h3>
-        <p>I'm a full-stack developer at C&amp;M Logistics, specializing in Python and web development. I combine backend experience (APIs, data models, deployment) with frontend skills to deliver polished, maintainable products.</p>
-        <p>Typical engagements include building new web apps, modernizing legacy systems, and delivering production-ready features with a focus on reliability and developer ergonomics.</p>
-      </section>
-
-      <section id="projects" class="container projects">
-        <h3>Recent Projects</h3>
-        <div class="grid">
-          <div class="card project">
-            <img class="project-thumb" src="/assets/project-thumb-1.svg" alt="Inventory Management thumbnail" loading="lazy" />
-            <h4>Inventory Management System</h4>
-            <p>Custom Python/Django application for tracking product inventory, orders, and shipping status. Features real-time updates and reporting.</p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Django</span>
-              <span class="tag">PostgreSQL</span>
-            </div>
-          </div>
-          <div class="card project">
-            <img class="project-thumb" src="/assets/project-thumb-2.svg" alt="Client Portal thumbnail" loading="lazy" />
-            <h4>Client Portal</h4>
-            <p>Secure web portal allowing clients to track shipments, view documentation, and manage their account. Built with modern JavaScript and a Python API.</p>
-            <div class="tags">
-              <span class="tag">React</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">Redis</span>
-            </div>
-          </div>
-          <div class="card project">
-            <img class="project-thumb" src="/assets/project-thumb-3.svg" alt="Route Optimization thumbnail" loading="lazy" />
-            <h4>Route Optimization</h4>
-            <p>Algorithm-driven delivery route planner that considers traffic, vehicle capacity, and time windows. Reduces fuel costs and improves delivery times.</p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">NumPy</span>
-              <span class="tag">Maps API</span>
-            </div>
-          </div>
-        </div>
-        <!-- Demo video placeholder -->
-        <div class="video-demo">
-          <div class="card" style="max-width:960px;width:100%">
-            <h4>Demo: Coding walkthrough</h4>
-            <p>Short demo video showing editor, terminal, and app in action. Replace `/assets/media/demo.mp4` with your recorded MP4.</p>
-            <video controls poster="/assets/media/poster.svg">
-              <source src="/assets/media/demo.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      </section>
-
-      <section id="tech" class="container tech">
-        <h3>Tech Stack</h3>
-        <div class="tech-grid">
-          <div class="tech-group">
-            <h4>Backend</h4>
-            <div class="card tech-card">
-              <ul class="tech-list">
-                <li>Python (Django, FastAPI)</li>
-                <li>Node.js & Express</li>
-                <li>PostgreSQL & Redis</li>
-                <li>RESTful & GraphQL APIs</li>
-                <li>Docker & Kubernetes</li>
-              </ul>
-            </div>
-          </div>
-          <div class="tech-group">
-            <h4>Frontend</h4>
-            <div class="card tech-card">
-              <ul class="tech-list">
-                <li>React & Next.js</li>
-                <li>Modern CSS & Tailwind</li>
-                <li>TypeScript</li>
-                <li>Responsive Design</li>
-                <li>Performance Optimization</li>
-              </ul>
-            </div>
-          </div>
-          <div class="tech-group">
-            <h4>Infrastructure</h4>
-            <div class="card tech-card">
-              <ul class="tech-list">
-                <li>AWS & Azure Cloud</li>
-                <li>CI/CD Pipelines</li>
-                <li>Monitoring & Logging</li>
-                <li>Security Best Practices</li>
-                <li>Load Balancing</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="process" class="container process">
-        <h3>Development Process</h3>
-        <div class="process-grid">
-          <div class="card process-card">
-            <span class="process-number">01</span>
-            <h4>Discovery</h4>
-            <p>In-depth consultation to understand your business needs, technical requirements, and project scope.</p>
-          </div>
-          <div class="card process-card">
-            <span class="process-number">02</span>
-            <h4>Planning</h4>
-            <p>Detailed technical architecture, timeline, and milestones. Clear communication and expectations.</p>
-          </div>
-          <div class="card process-card">
-            <span class="process-number">03</span>
-            <h4>Development</h4>
-            <p>Agile development with regular updates. Focus on clean code, testing, and maintainability.</p>
-          </div>
-          <div class="card process-card">
-            <span class="process-number">04</span>
-            <h4>Delivery</h4>
-            <p>Thorough testing, documentation, and deployment. Ongoing support and maintenance available.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="testimonials" class="container testimonials">
-        <h3>Client Feedback</h3>
-        <div class="testimonials-grid">
-          <div class="card testimonial">
-            <blockquote>
-              "Outstanding technical expertise and communication. Delivered our logistics platform ahead of schedule."
-            </blockquote>
-            <cite>
-              <div class="testimonial-name">Alex Chen</div>
-              <div class="testimonial-title">CTO, FastFreight Inc</div>
-            </cite>
-          </div>
-          <div class="card testimonial">
-            <blockquote>
-              "Transformed our legacy system into a modern, efficient platform. Exceptional problem-solving skills."
-            </blockquote>
-            <cite>
-              <div class="testimonial-name">Sarah Martinez</div>
-              <div class="testimonial-title">Operations Director, Global Transit</div>
-            </cite>
-          </div>
-          <div class="card testimonial">
-            <blockquote>
-              "The custom route optimization system saved us 30% in delivery costs. Highly recommended."
-            </blockquote>
-            <cite>
-              <div class="testimonial-name">Michael Wong</div>
-              <div class="testimonial-title">CEO, Express Delivery Co</div>
-            </cite>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="container contact">
-        <h3>Contact</h3>
-        <p>Interested in working together? Send a message below or email me directly.</p>
-        <form id="contactForm" class="contact-form" data-netlify="true" method="POST" name="contact">
-          <input type="hidden" name="form-name" value="contact" />
-          
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" required />
-
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required />
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="6" required></textarea>
-
-          <button type="submit" class="btn" id="submitBtn">Send message</button>
-        </form>
-        <div id="formResult" class="form-result" aria-live="polite"></div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container">
-  <p>&copy; <span id="year"></span> C&amp;M Logistics&trade; — Full-stack Python &amp; Web Development</p>
+  <p>&copy; <span id="year"></span> NCM Solutions&trade; — Full-stack Python &amp; Web Development</p>
       </div>
     </footer>
 
     <script defer src="script.min.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function(){
+          navigator.serviceWorker.register('/sw.js').catch(function(){});
+        });
+      }
+    </script>
+    <script>
+      (function(){
+        var deferredPrompt=null;function addBtn(){if(!document.body){window.addEventListener('DOMContentLoaded',addBtn,{once:true});return;}var b=document.createElement('button');b.textContent='Install App';b.setAttribute('aria-label','Install this app');b.style.position='fixed';b.style.bottom='16px';b.style.right='16px';b.style.zIndex='10000';b.style.padding='10px 14px';b.style.background='#0f1624';b.style.color='#fff';b.style.border='none';b.style.borderRadius='6px';b.style.boxShadow='0 2px 6px rgba(0,0,0,.2)';b.style.cursor='pointer';b.addEventListener('click',function(){if(!deferredPrompt)return;b.disabled=true;deferredPrompt.prompt();deferredPrompt.userChoice.finally(function(){b.remove();deferredPrompt=null;});});document.body.appendChild(b);}window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferredPrompt=e;addBtn();});
+      })();
+    </script>
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "NCM Solutions",
+        "url": "https://cm-logistics.net/",
+        "logo": "https://cm-logistics.net/assets/logo.svg",
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "millerclay46@gmail.com",
+          "telephone": "+1-470-632-1873"
+        }]
+      }
+      </script>
   </body>
 </html>
