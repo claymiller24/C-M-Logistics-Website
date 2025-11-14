@@ -24,6 +24,7 @@ body{margin:0;font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;background:l
 .hero{padding:6rem 0 4rem}
 .hero h2{font-size:2rem;margin:0 0 .5rem}
 .lead{color:var(--muted);max-width:60ch}
+.motto{font-size:1.3rem;font-style:italic;color:var(--accent);margin:1.5rem 0 1.5rem;font-weight:600;max-width:60ch}
 .cta{display:inline-block;background:var(--accent);color:#012018;padding:.6rem 1rem;border-radius:8px;text-decoration:none;font-weight:600}
 
 /* Hero media (moved from inline styles) */
