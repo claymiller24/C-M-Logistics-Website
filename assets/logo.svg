@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="200" height="50" version="1.1" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
- <g fill="#6ee7b7">
-  <path d="m31.25 12.5c-6.9036 0-12.5 5.5964-12.5 12.5s5.5964 12.5 12.5 12.5c3.4518 0 6.25-5.5964 6.25-12.5s-2.7982-12.5-6.25-12.5zm-18.75 12.5c0-10.355 8.3929-18.75 18.75-18.75 5.1786 0 9.375 8.3929 9.375 18.75s-4.1964 18.75-9.375 18.75c-10.357 0-18.75-8.395-18.75-18.75z"/>
-  <path d="m68.75 12.5c6.9036 0 12.5 5.5964 12.5 12.5s-5.5964 12.5-12.5 12.5c-3.4518 0-6.25-5.5964-6.25-12.5s2.7982-12.5 6.25-12.5zm18.75 12.5c0-10.355-8.3929-18.75-18.75-18.75-5.1786 0-9.375 8.3929-9.375 18.75s4.1964 18.75 9.375 18.75c10.357 0 18.75-8.395 18.75-18.75z"/>
-  <path d="m100 6.25 37.5 37.5h-75z"/>
- </g>
- <path d="m110 25h60" stroke="#94a3b8" stroke-linecap="round" stroke-width="2"/>
- <path d="m140 15v20" stroke="#94a3b8" stroke-linecap="round" stroke-width="2"/>
+  <!-- Computer Chip Icon -->
+  <g id="chip" transform="translate(2, 8)">
+    <!-- Main chip body -->
+    <rect x="0" y="0" width="24" height="24" rx="1.5" fill="none" stroke="#0f1624" stroke-width="1.2"/>
+    
+    <!-- Inner circuit pattern -->
+    <circle cx="12" cy="12" r="7" fill="none" stroke="#0f1624" stroke-width="0.8"/>
+    <circle cx="12" cy="12" r="3.5" fill="#0f1624"/>
+    
+    <!-- Circuit lines extending outward -->
+    <line x1="12" y1="0" x2="12" y2="-3" stroke="#0f1624" stroke-width="1.2"/>
+    <line x1="24" y1="12" x2="27" y2="12" stroke="#0f1624" stroke-width="1.2"/>
+    <line x1="12" y1="24" x2="12" y2="27" stroke="#0f1624" stroke-width="1.2"/>
+    <line x1="0" y1="12" x2="-3" y2="12" stroke="#0f1624" stroke-width="1.2"/>
+    
+    <!-- Corner accent dots -->
+    <circle cx="1.5" cy="1.5" r="1" fill="#0f1624"/>
+    <circle cx="22.5" cy="1.5" r="1" fill="#0f1624"/>
+    <circle cx="1.5" cy="22.5" r="1" fill="#0f1624"/>
+    <circle cx="22.5" cy="22.5" r="1" fill="#0f1624"/>
+  </g>
+  
+  <!-- Text: NCM -->
+  <text x="35" y="34" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="#0f1624" letter-spacing="-0.5">
+    NCM
+  </text>
+  
+  <!-- Accent line under text -->
+  <line x1="35" y1="38" x2="125" y2="38" stroke="#0f1624" stroke-width="1.5"/>
+  
+  <!-- Small "Solutions" label -->
+  <text x="35" y="47" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="8" font-weight="500" fill="#0f1624" letter-spacing="0.3" opacity="0.8">
+    SOLUTIONS
+  </text>
 </svg>
