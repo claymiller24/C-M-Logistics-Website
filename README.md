@@ -77,10 +77,10 @@ Notes: Netlify handles SSL automatically. If you prefer GitHub Pages or another 
 
 ## Files
 
-- `index.html` — Single-page site with all sections.
-- `styles.css` — Modern, responsive styles.
-- `script.js` — Form handling (Netlify + fallback).
-- `assets/` — Logo, favicon, and OG image.
+- `index.html` ï¿½ Single-page site with all sections.
+- `styles.css` ï¿½ Modern, responsive styles.
+- `script.js` ï¿½ Form handling (Netlify + fallback).
+- `assets/` ï¿½ Logo, favicon, and OG image.
 
 ## Contact form
 
@@ -103,9 +103,9 @@ To keep your local repository in sync with GitHub:
 git pull origin main  # Get latest changes
 ```
 
-2. Make your changes locally.
+1. Make your changes locally.
 
-3. Stage and commit:
+1. Stage and commit:
 
 ```powershell
 git add .  # Stage all changes
@@ -113,7 +113,7 @@ git add .  # Stage all changes
 git commit -m "Describe your changes here"
 ```
 
-4. Push to GitHub:
+1. Push to GitHub:
 
 ```powershell
 git push origin main
@@ -129,15 +129,15 @@ For safer changes and code review:
 git checkout -b feature-name
 ```
 
-2. Make your changes in this branch.
+1. Make your changes in this branch.
 
-3. Push branch to GitHub:
+1. Push branch to GitHub:
 
 ```powershell
 git push origin feature-name
 ```
 
-4. Create PR on GitHub: Use the GitHub UI (Compare & pull request) to open a PR, review, and merge.
+1. Create PR on GitHub: Use the GitHub UI (Compare & pull request) to open a PR, review, and merge.
 
 ## OneDrive sync tips
 
