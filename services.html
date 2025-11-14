@@ -54,22 +54,117 @@
     <main>
       <section class="container services">
         <h2>Services</h2>
-        <div class="grid">
-          <div class="card">
-            <h4>Python Development</h4>
-            <p>Clean, testable Python code for automation, web backends, data processing, and APIs.</p>
+        <div class="services-grid">
+          <!-- Python Development -->
+          <div class="service-card card">
+            <div class="service-header" onclick="this.parentElement.classList.toggle('expanded')">
+              <h4>Python Development</h4>
+              <span class="expand-icon">+</span>
+            </div>
+            <p class="service-summary">Clean, testable Python code for automation, web backends, data processing, and APIs.</p>
+            <div class="service-details">
+              <div class="details-content">
+                <h5>What's Included</h5>
+                <ul>
+                  <li>- Custom scripts and automation tools</li>
+                  <li>- Django & FastAPI backend services</li>
+                  <li>- Data processing and ETL pipelines</li>
+                  <li>- Unit testing and code coverage</li>
+                  <li>- Documentation and deployment guides</li>
+                </ul>
+                <div class="service-media">
+                  <img src="/assets/media/python-code.jpg" alt="Python development" class="service-image" />
+                  <video class="service-video" controls>
+                    <source src="/assets/media/python-demo.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card">
-            <h4>Backend / APIs</h4>
-            <p>REST or GraphQL APIs, database design, authentication, and deployable server code.</p>
+
+          <!-- Backend / APIs -->
+          <div class="service-card card">
+            <div class="service-header" onclick="this.parentElement.classList.toggle('expanded')">
+              <h4>Backend & APIs</h4>
+              <span class="expand-icon">+</span>
+            </div>
+            <p class="service-summary">REST or GraphQL APIs, database design, authentication, and deployable server code.</p>
+            <div class="service-details">
+              <div class="details-content">
+                <h5>What's Included</h5>
+                <ul>
+                  <li>- RESTful & GraphQL API design</li>
+                  <li>- Database schema design and optimization</li>
+                  <li>- JWT & OAuth authentication</li>
+                  <li>- Rate limiting and security</li>
+                  <li>- Docker containerization & deployment</li>
+                </ul>
+                <div class="service-media">
+                  <img src="/assets/media/api-architecture.jpg" alt="API architecture" class="service-image" />
+                  <video class="service-video" controls>
+                    <source src="/assets/media/api-demo.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card">
-            <h4>Frontend</h4>
-            <p>Responsive, accessible UI using modern HTML/CSS and JS frameworks when appropriate.</p>
+
+          <!-- Frontend -->
+          <div class="service-card card">
+            <div class="service-header" onclick="this.parentElement.classList.toggle('expanded')">
+              <h4>Frontend Development</h4>
+              <span class="expand-icon">+</span>
+            </div>
+            <p class="service-summary">Responsive, accessible UI using modern HTML/CSS and JS frameworks.</p>
+            <div class="service-details">
+              <div class="details-content">
+                <h5>What's Included</h5>
+                <ul>
+                  <li>- React & Next.js applications</li>
+                  <li>- Responsive & mobile-first design</li>
+                  <li>- Performance optimization</li>
+                  <li>- Accessibility (WCAG) standards</li>
+                  <li>- Cross-browser compatibility testing</li>
+                </ul>
+                <div class="service-media">
+                  <img src="/assets/media/frontend-ui.jpg" alt="Frontend UI" class="service-image" />
+                  <video class="service-video" controls>
+                    <source src="/assets/media/frontend-demo.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card">
-            <h4>Full-Stack Projects</h4>
-            <p>End-to-end app development: design, implementation, testing and deployment.</p>
+
+          <!-- Full-Stack Projects -->
+          <div class="service-card card">
+            <div class="service-header" onclick="this.parentElement.classList.toggle('expanded')">
+              <h4>Full-Stack Projects</h4>
+              <span class="expand-icon">+</span>
+            </div>
+            <p class="service-summary">End-to-end app development: design, implementation, testing and deployment.</p>
+            <div class="service-details">
+              <div class="details-content">
+                <h5>What's Included</h5>
+                <ul>
+                  <li>- Requirements analysis & architecture</li>
+                  <li>- Frontend + backend implementation</li>
+                  <li>- Integration testing & QA</li>
+                  <li>- Cloud deployment (AWS, Azure)</li>
+                  <li>- Ongoing maintenance & support</li>
+                </ul>
+                <div class="service-media">
+                  <img src="/assets/media/fullstack-app.jpg" alt="Full-stack application" class="service-image" />
+                  <video class="service-video" controls>
+                    <source src="/assets/media/fullstack-demo.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
