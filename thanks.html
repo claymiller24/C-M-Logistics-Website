@@ -3,7 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#0f1624" />
+    <!-- Add theme-color for Chrome, msapplication-navbutton-color for Opera, and apple-mobile-web-app-status-bar-style for iOS Safari -->
+    <meta name="theme-color" content="#0f1624">
+    <!-- Fallback for browsers that do not support theme-color -->
+    <style>
+      @media (prefers-color-scheme: dark) {
+        body { background-color: #0f1624; }
+      }
+      body {
+        background-color: #0f1624;
+      }
+    </style>
+    <meta name="msapplication-navbutton-color" content="#0f1624">
+    <!-- Fallback for browsers that do not support theme-color -->
+    <style>
+      @media (prefers-color-scheme: dark) {
+        body { background-color: #0f1624; }
+      }
+    </style>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="NCM Solutions" />
     <title>Thanks — NCM Solutions™</title>
