@@ -3,6 +3,10 @@
   publish = "."
   command = ""
 
+# Force rebuild cache bust
+[build.cache]
+  skip = true
+
 [[headers]]
   for = "/*"
   [headers.values]
