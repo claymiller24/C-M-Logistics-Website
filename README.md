@@ -1,4 +1,4 @@
-ï»¿# NCM Solutions (TM) - Full-Stack Python & Web Development
+# NCM Solutions (TM) - Full-Stack Python & Web Development
 
 Modern static website for NCM Solutions showcasing Python and web development services. Features a responsive design with glass morphism effects, project showcase, and a working contact form with Netlify Forms integration.
 
@@ -44,7 +44,7 @@ python -m http.server 8000
 2. Prepare domain (optional):
 
    - Buy a domain from any registrar (Namecheap, Google Domains, GoDaddy, Cloudflare, etc.).
-   - Replace the `CNAME` file's placeholder with your purchased domain (one line) before deploying. This project uses `cm-logistics.net` as the example production domain.
+   - Replace the `CNAME` file's placeholder with your purchased domain (one line) before deploying. This project uses `ncmsolutions.tech` as the example production domain.
 
 3. Deploy on Netlify:
 
@@ -65,7 +65,7 @@ python -m http.server 8000
 
 6. Post-deploy checks:
 
-   - Verify your site (example: `https://cm-logistics.net`) is serving the site and `sitemap.xml` and `robots.txt` are reachable.
+   - Verify your site (example: `https://ncmsolutions.tech`) is serving the site and `sitemap.xml` and `robots.txt` are reachable.
 
 Notes: Netlify handles SSL automatically. If you prefer GitHub Pages or another host, follow their DNS instructions. Netlify is recommended because it supports static hosting, automatic SSL, and Netlify Forms out of the box.
 
@@ -77,10 +77,10 @@ Notes: Netlify handles SSL automatically. If you prefer GitHub Pages or another 
 
 ## Files
 
-- `index.html` â€” Single-page site with all sections.
-- `styles.css` â€” Modern, responsive styles.
-- `script.js` â€” Form handling (Netlify + fallback).
-- `assets/` â€” Logo, favicon, and OG image.
+- `index.html` — Single-page site with all sections.
+- `styles.css` — Modern, responsive styles.
+- `script.js` — Form handling (Netlify + fallback).
+- `assets/` — Logo, favicon, and OG image.
 
 ## Contact form
 
