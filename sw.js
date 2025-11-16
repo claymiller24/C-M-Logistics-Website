@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ncm-site-v1';
+const CACHE_NAME = 'ncm-site-v2';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
