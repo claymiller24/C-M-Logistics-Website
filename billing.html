@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f1624" />
+    <meta name="apple-mobile-web-app-title" content="NCM Solutions" />
+    <title>Billing Models — NCM Solutions™</title>
+    <meta name="description" content="Detailed billing models, subscription tiers, and payment options. Choose the right plan for your development needs." />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Billing Models — NCM Solutions™" />
+    <meta property="og:description" content="Subscription and code ownership billing options." />
+    <meta property="og:image" content="/assets/og-image.svg" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Icons -->
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
+    <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#0f1624" />
+    
+    <!-- Styles -->
+    <link rel="preload" href="styles.min.css" as="style" />
+    <link rel="stylesheet" href="styles.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="canonical" href="https://ncmsolutions.tech/billing.html" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/app-icon-180.png" />
+    
+    <style>
+      .billing-section {
+        margin: 3rem 0;
+        padding: 2rem;
+        background: linear-gradient(135deg, rgba(110, 231, 183, 0.08) 0%, rgba(45, 212, 191, 0.05) 100%);
+        border: 1px solid rgba(110, 231, 183, 0.2);
+        border-radius: 12px;
+      }
+      
+      .billing-section h2 {
+        color: #6ee7b7;
+        margin-bottom: 1.5rem;
+        font-size: 1.75rem;
+      }
+      
+      .billing-section h3 {
+        color: #f7fafc;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+      }
+      
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        background: rgba(15, 22, 36, 0.6);
+        border: 1px solid rgba(110, 231, 183, 0.15);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      
+      .comparison-table th {
+        background: rgba(110, 231, 183, 0.1);
+        color: #6ee7b7;
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(110, 231, 183, 0.2);
+      }
+      
+      .comparison-table td {
+        padding: 1rem;
+        color: #cbd5e1;
+        border-bottom: 1px solid rgba(110, 231, 183, 0.1);
+      }
+      
+      .comparison-table tr:last-child td {
+        border-bottom: none;
+      }
+      
+      .comparison-table td:first-child {
+        font-weight: 600;
+        color: #f7fafc;
+        width: 30%;
+      }
+      
+      .feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+      }
+      
+      .feature-list li {
+        padding: 0.75rem 0 0.75rem 1.75rem;
+        color: #cbd5e1;
+        position: relative;
+      }
+      
+      .feature-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #6ee7b7;
+        font-weight: 700;
+      }
+      
+      .feature-list li.negative {
+        opacity: 0.6;
+      }
+      
+      .feature-list li.negative::before {
+        content: "✕";
+        color: #94a3b8;
+      }
+      
+      .model-card {
+        background: rgba(15, 22, 36, 0.8);
+        border: 1px solid rgba(110, 231, 183, 0.15);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+      
+      .model-card h4 {
+        color: #6ee7b7;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+      
+      .model-card p {
+        color: #cbd5e1;
+        margin: 0.5rem 0;
+        font-size: 0.95rem;
+      }
+      
+      .pricing-badge {
+        display: inline-block;
+        background: rgba(110, 231, 183, 0.15);
+        border: 1px solid rgba(110, 231, 183, 0.3);
+        color: #6ee7b7;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin: 0.5rem 0;
+      }
+      
+      .payment-note {
+        background: rgba(110, 231, 183, 0.05);
+        border-left: 3px solid #6ee7b7;
+        padding: 1.5rem;
+        border-radius: 6px;
+        margin: 1.5rem 0;
+        color: #cbd5e1;
+      }
+      
+      .payment-note strong {
+        color: #f7fafc;
+      }
+      
+      .tab-container {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .tab-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+      
+      .tab-btn {
+        background: rgba(110, 231, 183, 0.1);
+        border: 1px solid rgba(110, 231, 183, 0.2);
+        color: #cbd5e1;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-weight: 500;
+      }
+      
+      .tab-btn:hover {
+        background: rgba(110, 231, 183, 0.2);
+        border-color: rgba(110, 231, 183, 0.4);
+      }
+      
+      .tab-btn.active {
+        background: #6ee7b7;
+        border-color: #6ee7b7;
+        color: #0f1624;
+      }
+      
+      .tab-content {
+        display: none;
+      }
+      
+      .tab-content.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <a href="/"><img src="/assets/logo-ncm.svg" alt="NCM Solutions™" width="200" height="50" /></a>
+        </div>
+        <nav class="nav">
+          <a href="/">Home</a>
+          <a href="/services.html">Services</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/portfolio.html">Portfolio</a>
+          <a href="/tech.html">Tech</a>
+          <a href="/cybersecurity.html">Cybersecurity</a>
+          <a href="/process.html">Process</a>
+          <a href="/about.html">About</a>
+          <a href="/testimonials.html">Testimonials</a>
+          <a href="/pricing.html">Pricing</a>
+          <a href="/billing.html" aria-current="page">Billing</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" style="padding: 3rem 0;">
+        <div class="container">
+          <h1>Billing Models & Subscription Plans</h1>
+          <p style="margin-top: 1rem; color: #cbd5e1; font-size: 1.1rem;">
+            Understand our flexible billing options designed to scale with your project needs.
+          </p>
+        </div>
+      </section>
+
+      <!-- Subscription Models -->
+      <section class="billing-section container">
+        <h2>Subscription Models</h2>
+        <p style="color: #cbd5e1; margin-bottom: 1.5rem;">
+          Ongoing development services with dedicated hours, support, and collaboration. Perfect for projects requiring continuous development or long-term partnerships.
+        </p>
+
+        <div class="tab-container">
+          <div class="tab-buttons">
+            <button class="tab-btn active" onclick="switchTab('starter')">Starter</button>
+            <button class="tab-btn" onclick="switchTab('professional')">Professional</button>
+            <button class="tab-btn" onclick="switchTab('enterprise')">Enterprise</button>
+          </div>
+
+          <!-- Starter Tab -->
+          <div id="starter" class="tab-content active">
+            <div class="model-card">
+              <h4>Starter Subscription</h4>
+              <p><strong style="color: #6ee7b7; font-size: 1.5rem;">$499/month</strong></p>
+              <p style="color: #94a3b8; font-size: 0.95rem;">Billed monthly • Cancel anytime with 7 days notice</p>
+              
+              <h3 style="margin-top: 1.5rem; color: #f7fafc;">What's Included:</h3>
+              <ul class="feature-list">
+                <li>20 hours/month of development</li>
+                <li>Basic code reviews</li>
+                <li>Email support (24-48 hour response time)</li>
+                <li>GitHub repository access</li>
+                <li>Monthly progress reports</li>
+                <li>Source code included (non-exclusive license)</li>
+                <li>2-week sprint cycles</li>
+              </ul>
+              
+              <div class="payment-note">
+                <strong>💡 Best for:</strong> Small projects, prototypes, side projects, or teams testing the waters.
+              </div>
+              
+              <h3 style="color: #f7fafc;">Overage Rates:</h3>
+              <p style="color: #cbd5e1;">Additional hours beyond 20/month: $65/hour</p>
+              
+              <h3 style="color: #f7fafc;">Payment Terms:</h3>
+              <ul class="feature-list">
+                <li>Monthly billing on anniversary date</li>
+                <li>Credit card, wire transfer, or ACH accepted</li>
+                <li>Invoices issued automatically</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Professional Tab -->
+          <div id="professional" class="tab-content">
+            <div class="model-card">
+              <h4>Professional Subscription (Recommended)</h4>
+              <p><strong style="color: #6ee7b7; font-size: 1.5rem;">$1,299/month</strong></p>
+              <p style="color: #94a3b8; font-size: 0.95rem;">Billed monthly • Cancel anytime with 7 days notice</p>
+              
+              <h3 style="margin-top: 1.5rem; color: #f7fafc;">What's Included:</h3>
+              <ul class="feature-list">
+                <li>60 hours/month of development</li>
+                <li>Advanced code reviews & optimization</li>
+                <li>Priority email & Slack support</li>
+                <li>Private GitHub repository</li>
+                <li>Bi-weekly progress updates</li>
+                <li>Source code included (non-exclusive license)</li>
+                <li>Architecture consultation (2 hours/month)</li>
+                <li>Flexible sprint cycles (1-2 weeks)</li>
+                <li>Quarterly business reviews</li>
+              </ul>
+              
+              <div class="payment-note">
+                <strong>💡 Best for:</strong> Growing teams, ongoing feature development, and businesses scaling their tech infrastructure.
+              </div>
+              
+              <h3 style="color: #f7fafc;">Overage Rates:</h3>
+              <p style="color: #cbd5e1;">Additional hours beyond 60/month: $95/hour</p>
+              
+              <h3 style="color: #f7fafc;">Payment Terms:</h3>
+              <ul class="feature-list">
+                <li>Monthly billing on anniversary date</li>
+                <li>10% discount available for annual prepayment</li>
+                <li>Credit card, wire transfer, or ACH accepted</li>
+                <li>Invoices issued automatically</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Enterprise Tab -->
+          <div id="enterprise" class="tab-content">
+            <div class="model-card">
+              <h4>Enterprise Subscription</h4>
+              <p><strong style="color: #6ee7b7; font-size: 1.5rem;">Custom Pricing</strong></p>
+              <p style="color: #94a3b8; font-size: 0.95rem;">Contact us for a customized quote based on your needs</p>
+              
+              <h3 style="margin-top: 1.5rem; color: #f7fafc;">What's Included:</h3>
+              <ul class="feature-list">
+                <li>Unlimited hours/month of development</li>
+                <li>Dedicated development team</li>
+                <li>24/7 premium support</li>
+                <li>Custom infrastructure setup</li>
+                <li>Weekly strategy meetings with leadership</li>
+                <li>Source code included (negotiable exclusivity)</li>
+                <li>Full technology consulting</li>
+                <li>Custom SLA agreements</li>
+                <li>Priority feature development</li>
+              </ul>
+              
+              <div class="payment-note">
+                <strong>💡 Best for:</strong> Large enterprises, mission-critical applications, and organizations requiring full-time dedicated teams.
+              </div>
+              
+              <h3 style="color: #f7fafc;">Flexible Terms:</h3>
+              <ul class="feature-list">
+                <li>Customizable team composition</li>
+                <li>Negotiable contract length (3-12 months)</li>
+                <li>Volume discounts available</li>
+                <li>Multiple payment methods supported</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Code Ownership Models -->
+      <section class="billing-section container">
+        <h2>Code Ownership Models</h2>
+        <p style="color: #cbd5e1; margin-bottom: 1.5rem;">
+          One-time purchase options for full codebase ownership. Ideal for projects where you want complete intellectual property rights and long-term independence.
+        </p>
+
+        <div class="model-card">
+          <h4>Small Project Code Ownership</h4>
+          <p><strong style="color: #6ee7b7; font-size: 1.5rem;">$3,999</strong></p>
+          <p style="color: #94a3b8;">One-time purchase • For codebases up to 2,000 lines</p>
+          
+          <h3 style="margin-top: 1.5rem; color: #f7fafc;">What You Get:</h3>
+          <ul class="feature-list">
+            <li>Complete source code ownership</li>
+            <li>All intellectual property rights transferred to you</li>
+            <li>Full documentation and architecture guides</li>
+            <li>Dependency list and license information</li>
+            <li>30 days of technical support post-transfer</li>
+            <li>Setup assistance and knowledge transfer sessions</li>
+            <li>Git repository with full history</li>
+          </ul>
+          
+          <div class="payment-note">
+            <strong>📝 Perfect for:</strong> Simple tools, utilities, scripts, and small applications where you want full ownership upfront.
+          </div>
+        </div>
+
+        <div class="model-card">
+          <h4>Medium Project Code Ownership</h4>
+          <p><strong style="color: #6ee7b7; font-size: 1.5rem;">$9,999</strong></p>
+          <p style="color: #94a3b8;">One-time purchase • For codebases 2,000 - 10,000 lines</p>
+          
+          <h3 style="margin-top: 1.5rem; color: #f7fafc;">What You Get:</h3>
+          <ul class="feature-list">
+            <li>Complete source code ownership</li>
+            <li>All intellectual property rights transferred to you</li>
+            <li>Comprehensive documentation (technical & user guides)</li>
+            <li>Architecture documentation and design decisions</li>
+            <li>90 days of technical support post-transfer</li>
+            <li>Technology transfer sessions (4-6 hours)</li>
+            <li>Deployment and infrastructure guides</li>
+            <li>Testing and quality assurance documentation</li>
+            <li>Maintenance and upgrade recommendations</li>
+          </ul>
+          
+          <div class="payment-note">
+            <strong>📝 Perfect for:</strong> Web applications, APIs, dashboards, and mid-sized projects requiring long-term independence.
+          </div>
+        </div>
+
+        <div class="model-card">
+          <h4>Large Project Code Ownership</h4>
+          <p><strong style="color: #6ee7b7; font-size: 1.5rem;">Custom Quote</strong></p>
+          <p style="color: #94a3b8;">One-time purchase • For codebases 10,000+ lines</p>
+          
+          <h3 style="margin-top: 1.5rem; color: #f7fafc;">What You Get:</h3>
+          <ul class="feature-list">
+            <li>Complete source code ownership</li>
+            <li>All intellectual property rights transferred to you</li>
+            <li>Enterprise-grade documentation suite</li>
+            <li>Full architecture & infrastructure documentation</li>
+            <li>1 year of technical support (unlimited)</li>
+            <li>Comprehensive training program (20+ hours)</li>
+            <li>DevOps and deployment setup assistance</li>
+            <li>SLA agreement for handoff quality</li>
+            <li>Custom integrations and third-party documentation</li>
+            <li>Ongoing optimization consulting (3 months)</li>
+          </ul>
+          
+          <div class="payment-note">
+            <strong>📝 Perfect for:</strong> Complex systems, enterprise applications, and mission-critical software where you need absolute control and long-term support.
+          </div>
+        </div>
+      </section>
+
+      <!-- Comparison Table -->
+      <section class="container" style="margin: 3rem 0;">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #f7fafc;">Subscription vs. Code Ownership</h2>
+        
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Subscriptions</th>
+              <th>Code Ownership</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ongoing Development</td>
+              <td>✓ Yes (included)</td>
+              <td>✗ No</td>
+            </tr>
+            <tr>
+              <td>Code Ownership</td>
+              <td>✗ Non-exclusive</td>
+              <td>✓ Full ownership</td>
+            </tr>
+            <tr>
+              <td>Long-term Support</td>
+              <td>✓ Yes (while active)</td>
+              <td>✓ Limited term</td>
+            </tr>
+            <tr>
+              <td>Flexibility</td>
+              <td>✓ Scale hours up/down</td>
+              <td>✓ One-time cost</td>
+            </tr>
+            <tr>
+              <td>License Type</td>
+              <td>Apache 2.0 (non-exclusive)</td>
+              <td>Full proprietary ownership</td>
+            </tr>
+            <tr>
+              <td>IP Rights</td>
+              <td>We retain some rights</td>
+              <td>100% yours</td>
+            </tr>
+            <tr>
+              <td>Updates & Improvements</td>
+              <td>✓ Yes (included)</td>
+              <td>✗ Your responsibility</td>
+            </tr>
+            <tr>
+              <td>Support Duration</td>
+              <td>As long as subscribed</td>
+              <td>Defined term (30-365 days)</td>
+            </tr>
+            <tr>
+              <td>Best For</td>
+              <td>Ongoing projects</td>
+              <td>One-time deliverables</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Hybrid Models -->
+      <section class="billing-section container">
+        <h2>Hybrid & Custom Models</h2>
+        
+        <p style="color: #cbd5e1; margin-bottom: 1.5rem;">
+          Not sure which model fits your needs? We offer flexible combinations to scale with your business.
+        </p>
+
+        <div class="model-card">
+          <h4>Start with Subscription, Transition to Ownership</h4>
+          <p style="color: #cbd5e1;">
+            Many clients start with a subscription to develop and refine their project, then purchase full code ownership once the product is stable and proven.
+          </p>
+          <ul class="feature-list">
+            <li>Reduce initial risk with subscription commitment</li>
+            <li>Credit up to 50% of subscription fees toward ownership purchase</li>
+            <li>Smooth handoff and knowledge transfer</li>
+            <li>Extended post-transfer support included</li>
+          </ul>
+        </div>
+
+        <div class="model-card">
+          <h4>Subscription + Custom Support</h4>
+          <p style="color: #cbd5e1;">
+            Get your standard subscription plus additional services tailored to your unique needs.
+          </p>
+          <ul class="feature-list">
+            <li>Add emergency support ($50/incident)</li>
+            <li>Add dedicated architect consultation ($150/hour)</li>
+            <li>Add expedited deployment assistance ($200/session)</li>
+            <li>Add training and documentation writing</li>
+          </ul>
+        </div>
+
+        <div class="model-card">
+          <h4>Team Augmentation</h4>
+          <p style="color: #cbd5e1;">
+            Need to scale your existing team? We can supplement with dedicated developers on a flexible basis.
+          </p>
+          <ul class="feature-list">
+            <li>$125/hour for part-time augmentation</li>
+            <li>$95/hour for full-time commitment (40+ hours/week)</li>
+            <li>Negotiate custom rates for 3+ month engagements</li>
+            <li>Integrate seamlessly with your existing team</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Payment & Terms -->
+      <section class="container" style="margin: 3rem 0; text-align: left;">
+        <h2 style="margin-bottom: 1.5rem; color: #f7fafc;">Payment Information & Terms</h2>
+        
+        <h3 style="color: #6ee7b7; margin-top: 1.5rem;">Accepted Payment Methods</h3>
+        <ul class="feature-list">
+          <li>Credit cards (Visa, Mastercard, American Express)</li>
+          <li>Wire transfers (International supported)</li>
+          <li>ACH transfers (US accounts)</li>
+          <li>PayPal</li>
+          <li>Custom invoicing for enterprise clients</li>
+        </ul>
+
+        <h3 style="color: #6ee7b7; margin-top: 1.5rem;">Subscription Terms</h3>
+        <ul class="feature-list">
+          <li>Monthly billing on the anniversary of start date</li>
+          <li>7-day cancellation notice required</li>
+          <li>No setup fees or hidden charges</li>
+          <li>Unused hours do not roll over (monthly reset)</li>
+          <li>Month-to-month flexibility (no long-term contracts required)</li>
+        </ul>
+
+        <h3 style="color: #6ee7b7; margin-top: 1.5rem;">Code Ownership Terms</h3>
+        <ul class="feature-list">
+          <li>50% deposit required to start development</li>
+          <li>50% balance due upon code delivery</li>
+          <li>Full ownership transfer upon final payment</li>
+          <li>All IP rights included in purchase</li>
+          <li>No recurring costs after one-time payment</li>
+        </ul>
+
+        <h3 style="color: #6ee7b7; margin-top: 1.5rem;">Refund Policy</h3>
+        <ul class="feature-list">
+          <li>Subscriptions: Prorated refund if cancelled within 7 days of first charge</li>
+          <li>Code Ownership: 100% refund if cancelled before development begins</li>
+          <li>50% refund if cancelled within first 2 weeks of development</li>
+          <li>No refunds after final delivery and acceptance</li>
+        </ul>
+      </section>
+
+      <!-- CTA -->
+      <section class="container" style="text-align: center; padding: 3rem 0; margin: 2rem 0; border-top: 1px solid rgba(110, 231, 183, 0.1);">
+        <h2>Ready to Get Started?</h2>
+        <p style="margin: 1rem 0; color: #cbd5e1;">
+          Have questions about billing or need a custom arrangement? Let's discuss the best option for your project.
+        </p>
+        <a href="/contact.html" style="display: inline-block; background: #6ee7b7; color: #0f1624; padding: 0.875rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s ease;">
+          Schedule a Consultation
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-col">
+          <h4>NCM Solutions</h4>
+          <p>Full-stack Python and web development services for modern businesses.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/services.html">Development Services</a></li>
+            <li><a href="/projects.html">Recent Projects</a></li>
+            <li><a href="/pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/portfolio.html">Portfolio</a></li>
+            <li><a href="/testimonials.html">Testimonials</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="https://github.com/claymiller24" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://linkedin.com/in/claymiller" target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 NCM Solutions™. All rights reserved. | Licensed under Apache License 2.0</p>
+      </div>
+    </footer>
+
+    <script src="script.min.js"></script>
+    <script>
+      function switchTab(tabName) {
+        // Hide all tab contents
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(content => content.classList.remove('active'));
+        
+        // Remove active class from all buttons
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        // Show selected tab
+        document.getElementById(tabName).classList.add('active');
+        
+        // Add active class to clicked button
+        event.target.classList.add('active');
+      }
+    </script>
+
+    <!--
+     * Licensed by Clay Miller
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *     http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     -->
+  </body>
+</html>
