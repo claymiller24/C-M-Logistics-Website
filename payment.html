@@ -30,8 +30,7 @@
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/app-icon-180.png" />
     
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
+
     
     <style>
       .payment-container {
@@ -813,29 +812,8 @@
     <script>
       let currentAmount = 0;
       let currentService = '';
-      let stripe, elements, cardElement;
 
-      // Initialize Stripe (use test key for development)
-      const stripeKey = 'pk_test_example'; // Replace with real Stripe key
-      if (stripeKey && stripeKey.includes('pk_')) {
-        stripe = Stripe(stripeKey);
-        elements = stripe.elements();
-        cardElement = elements.create('card', {
-          style: {
-            base: {
-              fontSize: '16px',
-              color: '#f7fafc',
-              '::placeholder': {
-                color: '#94a3b8',
-              },
-            },
-            invalid: {
-              color: '#f56565',
-            },
-          },
-        });
-        cardElement.mount('#card-element');
-      }
+      // Payment processing (simplified for non-Stripe methods)
 
       function selectService(element, amount, service) {
         // Clear previous selection
