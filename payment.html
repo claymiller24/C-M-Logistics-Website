@@ -1,0 +1,1126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f1624" />
+    <meta name="apple-mobile-web-app-title" content="NCM Solutions" />
+    <title>Payment Portal — NCM Solutions™</title>
+    <meta name="description" content="Secure payment portal for subscriptions and code ownership. Multiple payment methods accepted." />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Payment Portal — NCM Solutions™" />
+    <meta property="og:description" content="Flexible payment options for all your development needs." />
+    <meta property="og:image" content="/assets/og-image.svg" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Icons -->
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
+    <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#0f1624" />
+    
+    <!-- Styles -->
+    <link rel="preload" href="styles.min.css" as="style" />
+    <link rel="stylesheet" href="styles.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="canonical" href="https://ncmsolutions.tech/payment.html" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/app-icon-180.png" />
+    
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <style>
+      .payment-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        padding: 2rem;
+      }
+      
+      @media (max-width: 768px) {
+        .payment-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+      
+      .payment-section {
+        background: linear-gradient(135deg, rgba(110, 231, 183, 0.08) 0%, rgba(45, 212, 191, 0.05) 100%);
+        border: 1px solid rgba(110, 231, 183, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+      }
+      
+      .payment-section h2 {
+        color: #6ee7b7;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+      }
+      
+      .payment-section h3 {
+        color: #f7fafc;
+        margin: 1.5rem 0 1rem 0;
+        font-size: 1.1rem;
+      }
+      
+      .payment-method-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      
+      .payment-method {
+        background: rgba(15, 22, 36, 0.8);
+        border: 2px solid rgba(110, 231, 183, 0.2);
+        border-radius: 8px;
+        padding: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        color: #cbd5e1;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+      
+      .payment-method:hover {
+        border-color: #6ee7b7;
+        background: rgba(110, 231, 183, 0.1);
+        transform: translateY(-2px);
+      }
+      
+      .payment-method.active {
+        background: #6ee7b7;
+        border-color: #6ee7b7;
+        color: #0f1624;
+      }
+      
+      .payment-method-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .payment-form {
+        display: none;
+      }
+      
+      .payment-form.active {
+        display: block;
+      }
+      
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+      
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #cbd5e1;
+        font-weight: 500;
+        font-size: 0.95rem;
+      }
+      
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        background: rgba(15, 22, 36, 0.8);
+        border: 1px solid rgba(110, 231, 183, 0.2);
+        border-radius: 6px;
+        color: #f7fafc;
+        font-family: Inter, sans-serif;
+        font-size: 0.95rem;
+        transition: border-color 0.2s ease;
+      }
+      
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #6ee7b7;
+        box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.1);
+      }
+      
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      
+      #card-element {
+        padding: 0.75rem;
+        background: rgba(15, 22, 36, 0.8);
+        border: 1px solid rgba(110, 231, 183, 0.2);
+        border-radius: 6px;
+        color: #f7fafc;
+      }
+      
+      .form-group button {
+        width: 100%;
+        padding: 1rem;
+        background: #6ee7b7;
+        border: none;
+        border-radius: 6px;
+        color: #0f1624;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      
+      .form-group button:hover:not(:disabled) {
+        background: #5dd5a3;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(110, 231, 183, 0.3);
+      }
+      
+      .form-group button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      
+      .order-summary {
+        background: rgba(15, 22, 36, 0.8);
+        border: 1px solid rgba(110, 231, 183, 0.2);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(110, 231, 183, 0.1);
+        color: #cbd5e1;
+      }
+      
+      .summary-item:last-child {
+        border-bottom: none;
+      }
+      
+      .summary-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-top: 2px solid rgba(110, 231, 183, 0.3);
+        margin-top: 1rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #6ee7b7;
+      }
+      
+      .service-selector {
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      
+      .service-option {
+        background: rgba(15, 22, 36, 0.8);
+        border: 2px solid rgba(110, 231, 183, 0.2);
+        border-radius: 8px;
+        padding: 1.5rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      
+      .service-option:hover {
+        border-color: #6ee7b7;
+        background: rgba(110, 231, 183, 0.08);
+      }
+      
+      .service-option.selected {
+        background: rgba(110, 231, 183, 0.15);
+        border-color: #6ee7b7;
+      }
+      
+      .service-option input {
+        margin-right: 0.75rem;
+        cursor: pointer;
+      }
+      
+      .service-option label {
+        cursor: pointer;
+        color: #f7fafc;
+        font-weight: 500;
+      }
+      
+      .service-description {
+        color: #94a3b8;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        margin-left: 1.75rem;
+      }
+      
+      .security-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        background: rgba(110, 231, 183, 0.1);
+        border: 1px solid rgba(110, 231, 183, 0.2);
+        border-radius: 6px;
+        margin-top: 1.5rem;
+        color: #94a3b8;
+        font-size: 0.85rem;
+      }
+      
+      .security-badge::before {
+        content: "🔒";
+        font-size: 1.2rem;
+      }
+      
+      .error-message {
+        background: rgba(245, 101, 101, 0.1);
+        border: 1px solid rgba(245, 101, 101, 0.3);
+        border-radius: 6px;
+        padding: 1rem;
+        color: #f87171;
+        margin-bottom: 1rem;
+        display: none;
+      }
+      
+      .error-message.show {
+        display: block;
+      }
+      
+      .success-message {
+        background: rgba(34, 197, 94, 0.1);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        border-radius: 6px;
+        padding: 1rem;
+        color: #86efac;
+        margin-bottom: 1rem;
+        display: none;
+      }
+      
+      .success-message.show {
+        display: block;
+      }
+      
+      .tab-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+      
+      .tab-btn {
+        background: rgba(110, 231, 183, 0.1);
+        border: 1px solid rgba(110, 231, 183, 0.2);
+        color: #cbd5e1;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-weight: 500;
+      }
+      
+      .tab-btn:hover {
+        background: rgba(110, 231, 183, 0.2);
+        border-color: rgba(110, 231, 183, 0.4);
+      }
+      
+      .tab-btn.active {
+        background: #6ee7b7;
+        border-color: #6ee7b7;
+        color: #0f1624;
+      }
+      
+      .tab-content {
+        display: none;
+      }
+      
+      .tab-content.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <a href="/"><img src="/assets/logo-ncm.svg" alt="NCM Solutions™" width="200" height="50" /></a>
+        </div>
+        <nav class="nav">
+          <a href="/">Home</a>
+          <a href="/services.html">Services</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/portfolio.html">Portfolio</a>
+          <a href="/tech.html">Tech</a>
+          <a href="/cybersecurity.html">Cybersecurity</a>
+          <a href="/process.html">Process</a>
+          <a href="/about.html">About</a>
+          <a href="/testimonials.html">Testimonials</a>
+          <a href="/pricing.html">Pricing</a>
+          <a href="/billing.html">Billing</a>
+          <a href="/payment.html" aria-current="page">Payment</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" style="padding: 3rem 0;">
+        <div class="container">
+          <h1>Secure Payment Portal</h1>
+          <p style="margin-top: 1rem; color: #cbd5e1; font-size: 1.1rem;">
+            Choose your service and preferred payment method. We accept multiple payment options for your convenience.
+          </p>
+        </div>
+      </section>
+
+      <div class="container payment-container">
+        <!-- Left Column: Service Selection & Summary -->
+        <div>
+          <div class="payment-section">
+            <h2>Select Service</h2>
+            <div class="tab-buttons" style="margin-bottom: 1.5rem;">
+              <button class="tab-btn active" onclick="switchServiceType('subscription')">Subscriptions</button>
+              <button class="tab-btn" onclick="switchServiceType('ownership')">Code Ownership</button>
+            </div>
+
+            <!-- Subscription Services -->
+            <div id="subscription" class="tab-content active">
+              <div class="service-selector">
+                <label class="service-option" onclick="selectService(this, 499, 'Starter Subscription - 20 hrs/month')">
+                  <input type="radio" name="service" value="starter" />
+                  <div>
+                    <label>Starter - $499/month</label>
+                    <div class="service-description">20 hours/month development, email support</div>
+                  </div>
+                </label>
+
+                <label class="service-option" onclick="selectService(this, 1299, 'Professional Subscription - 60 hrs/month')">
+                  <input type="radio" name="service" value="professional" />
+                  <div>
+                    <label>Professional - $1,299/month</label>
+                    <div class="service-description">60 hours/month development, priority support</div>
+                  </div>
+                </label>
+
+                <label class="service-option" onclick="selectService(this, 0, 'Enterprise Subscription - Custom')">
+                  <input type="radio" name="service" value="enterprise" />
+                  <div>
+                    <label>Enterprise - Custom Pricing</label>
+                    <div class="service-description">Unlimited hours, dedicated team, 24/7 support</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Code Ownership Services -->
+            <div id="ownership" class="tab-content">
+              <div class="service-selector">
+                <label class="service-option" onclick="selectService(this, 3999, 'Small Project Code Ownership - Up to 2000 lines')">
+                  <input type="radio" name="service" value="small-ownership" />
+                  <div>
+                    <label>Small Project - $3,999</label>
+                    <div class="service-description">Up to 2,000 lines, full ownership</div>
+                  </div>
+                </label>
+
+                <label class="service-option" onclick="selectService(this, 9999, 'Medium Project Code Ownership - 2000-10000 lines')">
+                  <input type="radio" name="service" value="medium-ownership" />
+                  <div>
+                    <label>Medium Project - $9,999</label>
+                    <div class="service-description">2,000-10,000 lines, full ownership</div>
+                  </div>
+                </label>
+
+                <label class="service-option" onclick="selectService(this, 0, 'Large Project Code Ownership - Custom Quote')">
+                  <input type="radio" name="service" value="large-ownership" />
+                  <div>
+                    <label>Large Project - Custom Quote</label>
+                    <div class="service-description">10,000+ lines, contact for pricing</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+              <h3 style="margin-top: 0; margin-bottom: 1rem;">Order Summary</h3>
+              <div class="summary-item">
+                <span>Service:</span>
+                <span id="summary-service" style="color: #6ee7b7;">None selected</span>
+              </div>
+              <div class="summary-item">
+                <span>Amount:</span>
+                <span id="summary-amount" style="color: #6ee7b7;">$0.00</span>
+              </div>
+              <div class="summary-total">
+                <span>Total:</span>
+                <span id="summary-total">$0.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Payment Methods & Form -->
+        <div>
+          <div class="payment-section">
+            <h2>Payment Method</h2>
+
+            <div class="payment-method-grid">
+              <div class="payment-method active" onclick="selectPaymentMethod('credit-card', this)">
+                <div class="payment-method-icon">💳</div>
+                <div>Credit Card</div>
+              </div>
+              <div class="payment-method" onclick="selectPaymentMethod('debit-card', this)">
+                <div class="payment-method-icon">🏧</div>
+                <div>Debit Card</div>
+              </div>
+              <div class="payment-method" onclick="selectPaymentMethod('paypal', this)">
+                <div class="payment-method-icon">🅿️</div>
+                <div>PayPal</div>
+              </div>
+              <div class="payment-method" onclick="selectPaymentMethod('apple-pay', this)">
+                <div class="payment-method-icon">🍎</div>
+                <div>Apple Pay</div>
+              </div>
+              <div class="payment-method" onclick="selectPaymentMethod('google-pay', this)">
+                <div class="payment-method-icon">🔵</div>
+                <div>Google Pay</div>
+              </div>
+              <div class="payment-method" onclick="selectPaymentMethod('venmo', this)">
+                <div class="payment-method-icon">📱</div>
+                <div>Venmo</div>
+              </div>
+              <div class="payment-method" onclick="selectPaymentMethod('cashapp', this)">
+                <div class="payment-method-icon">💵</div>
+                <div>Cash App</div>
+              </div>
+              <div class="payment-method" onclick="selectPaymentMethod('bank-transfer', this)">
+                <div class="payment-method-icon">🏦</div>
+                <div>Bank Transfer</div>
+              </div>
+            </div>
+
+            <div class="error-message" id="error-message"></div>
+            <div class="success-message" id="success-message"></div>
+
+            <!-- Credit/Debit Card Form -->
+            <form id="credit-card-form" class="payment-form active" onsubmit="handleCreditCardPayment(event)">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+
+              <div class="form-group">
+                <label>Card Details</label>
+                <div id="card-element"></div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <input type="text" id="country" name="country" value="United States" />
+                </div>
+                <div class="form-group">
+                  <label for="zip">ZIP Code</label>
+                  <input type="text" id="zip" name="zip" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" id="submit-btn">Pay $0.00</button>
+              </div>
+            </form>
+
+            <!-- Debit Card Form -->
+            <form id="debit-card-form" class="payment-form" onsubmit="handleCreditCardPayment(event)">
+              <div class="form-group">
+                <label for="debit-name">Full Name</label>
+                <input type="text" id="debit-name" name="name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="debit-email">Email Address</label>
+                <input type="email" id="debit-email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="debit-phone">Phone Number</label>
+                <input type="tel" id="debit-phone" name="phone" />
+              </div>
+
+              <div class="form-group">
+                <label>Debit Card Details</label>
+                <div id="debit-card-element"></div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="debit-country">Country</label>
+                  <input type="text" id="debit-country" name="country" value="United States" />
+                </div>
+                <div class="form-group">
+                  <label for="debit-zip">ZIP Code</label>
+                  <input type="text" id="debit-zip" name="zip" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button type="submit">Pay $0.00</button>
+              </div>
+            </form>
+
+            <!-- PayPal Form -->
+            <form id="paypal-form" class="payment-form">
+              <div class="form-group">
+                <label for="paypal-email">PayPal Email</label>
+                <input type="email" id="paypal-email" name="email" placeholder="you@example.com" required />
+              </div>
+
+              <div class="form-group">
+                <label for="paypal-note">Payment Note (optional)</label>
+                <textarea id="paypal-note" name="note" rows="3" placeholder="Add any special instructions..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">
+                  💡 You'll be redirected to PayPal to complete your payment securely.
+                </p>
+                <button type="button" onclick="handlePayPalPayment()" style="background: #003087;">Pay with PayPal</button>
+              </div>
+            </form>
+
+            <!-- Venmo Form -->
+            <form id="venmo-form" class="payment-form">
+              <div class="form-group">
+                <label for="venmo-user">Venmo Username</label>
+                <input type="text" id="venmo-user" name="venmo_user" placeholder="@your-username" required />
+              </div>
+
+              <div class="form-group">
+                <label for="venmo-email">Email Address</label>
+                <input type="email" id="venmo-email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="venmo-note">Payment Note</label>
+                <textarea id="venmo-note" name="note" rows="3" placeholder="Add payment description..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">
+                  📱 Send payment to @ncmsolutions with the amount shown. Please include invoice reference in the note.
+                </p>
+                <button type="button" onclick="handleVenmoPayment()" style="background: #3D95CE;">Send via Venmo</button>
+              </div>
+            </form>
+
+            <!-- Cash App Form -->
+            <form id="cashapp-form" class="payment-form">
+              <div class="form-group">
+                <label for="cashapp-tag">Your Cash App Tag</label>
+                <input type="text" id="cashapp-tag" name="cashapp_tag" placeholder="$yourname" required />
+              </div>
+
+              <div class="form-group">
+                <label for="cashapp-email">Email Address</label>
+                <input type="email" id="cashapp-email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="cashapp-note">Payment Note</label>
+                <textarea id="cashapp-note" name="note" rows="3" placeholder="Add payment description..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">
+                  💵 Send payment to $ncmsolutions. We'll send you a confirmation once received.
+                </p>
+                <button type="button" onclick="handleCashAppPayment()" style="background: #00C851;">Send via Cash App</button>
+              </div>
+            </form>
+
+            <!-- Apple Pay Form -->
+            <form id="apple-pay-form" class="payment-form">
+              <div class="form-group">
+                <label for="apple-email">Email Address</label>
+                <input type="email" id="apple-email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">
+                  🍎 Click below to pay with Apple Pay. Your payment information is encrypted and secure.
+                </p>
+                <button type="button" onclick="handleApplePayment()" style="background: #000;">Pay with Apple Pay</button>
+              </div>
+            </form>
+
+            <!-- Google Pay Form -->
+            <form id="google-pay-form" class="payment-form">
+              <div class="form-group">
+                <label for="google-email">Email Address</label>
+                <input type="email" id="google-email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">
+                  🔵 Click below to pay with Google Pay. Your payment information is encrypted and secure.
+                </p>
+                <button type="button" onclick="handleGooglePayment()" style="background: #4285F4;">Pay with Google Pay</button>
+              </div>
+            </form>
+
+            <!-- Bank Transfer Form -->
+            <form id="bank-transfer-form" class="payment-form">
+              <div class="form-group">
+                <label for="bank-name">Full Name</label>
+                <input type="text" id="bank-name" name="name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="bank-email">Email Address</label>
+                <input type="email" id="bank-email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="bank-phone">Phone Number</label>
+                <input type="tel" id="bank-phone" name="phone" />
+              </div>
+
+              <div class="form-group">
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">
+                  🏦 <strong>Bank Transfer Details:</strong><br />
+                  Account Holder: NCM Solutions LLC<br />
+                  Bank: First National Bank<br />
+                  Routing Number: (provided upon request)<br />
+                  Account Number: (provided upon request)<br />
+                  Reference: Contact us for wire details
+                </p>
+                <button type="button" onclick="handleBankTransfer()" style="background: #1f2937;">Request Bank Details</button>
+              </div>
+            </form>
+
+            <!-- Security Badge -->
+            <div class="security-badge">
+              All transactions are encrypted and PCI-DSS compliant.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <section class="container" style="margin: 3rem 0; text-align: left;">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #f7fafc;">Payment FAQ</h2>
+        
+        <div style="display: grid; gap: 1.5rem; max-width: 800px; margin: 0 auto;">
+          <div style="background: rgba(110, 231, 183, 0.05); border: 1px solid rgba(110, 231, 183, 0.2); border-radius: 8px; padding: 1.5rem;">
+            <h3 style="color: #6ee7b7; margin-top: 0;">Is my payment information secure?</h3>
+            <p style="color: #cbd5e1; margin: 0;">Yes. We use industry-standard encryption and are PCI-DSS compliant. All payment processing is handled by trusted, certified payment processors.</p>
+          </div>
+
+          <div style="background: rgba(110, 231, 183, 0.05); border: 1px solid rgba(110, 231, 183, 0.2); border-radius: 8px; padding: 1.5rem;">
+            <h3 style="color: #6ee7b7; margin-top: 0;">Which payment method should I use?</h3>
+            <p style="color: #cbd5e1; margin: 0;">Choose whichever method is most convenient for you. All methods are equally secure. For international payments, wire transfer or PayPal typically work best.</p>
+          </div>
+
+          <div style="background: rgba(110, 231, 183, 0.05); border: 1px solid rgba(110, 231, 183, 0.2); border-radius: 8px; padding: 1.5rem;">
+            <h3 style="color: #6ee7b7; margin-top: 0;">When will my payment be processed?</h3>
+            <p style="color: #cbd5e1; margin: 0;">Card and digital wallet payments are processed immediately. Bank transfers and peer-to-peer payments (Venmo, Cash App) will be processed within 1-2 business days.</p>
+          </div>
+
+          <div style="background: rgba(110, 231, 183, 0.05); border: 1px solid rgba(110, 231, 183, 0.2); border-radius: 8px; padding: 1.5rem;">
+            <h3 style="color: #6ee7b7; margin-top: 0;">What's your refund policy?</h3>
+            <p style="color: #cbd5e1; margin: 0;">Subscriptions can be cancelled within 7 days for a full refund. Code ownership packages are non-refundable after development begins. See our <a href="/billing.html" style="color: #6ee7b7;">billing page</a> for details.</p>
+          </div>
+
+          <div style="background: rgba(110, 231, 183, 0.05); border: 1px solid rgba(110, 231, 183, 0.2); border-radius: 8px; padding: 1.5rem;">
+            <h3 style="color: #6ee7b7; margin-top: 0;">Will I receive an invoice?</h3>
+            <p style="color: #cbd5e1; margin: 0;">Yes. A detailed invoice will be sent to your email address immediately after payment is received. You can also request invoices anytime from our team.</p>
+          </div>
+
+          <div style="background: rgba(110, 231, 183, 0.05); border: 1px solid rgba(110, 231, 183, 0.2); border-radius: 8px; padding: 1.5rem;">
+            <h3 style="color: #6ee7b7; margin-top: 0;">What if my payment fails?</h3>
+            <p style="color: #cbd5e1; margin: 0;">You'll see an error message explaining why. Common reasons include insufficient funds, incorrect card details, or network issues. Please try again or use a different payment method.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="container" style="text-align: center; padding: 3rem 0; margin: 2rem 0; border-top: 1px solid rgba(110, 231, 183, 0.1);">
+        <h2>Need Help?</h2>
+        <p style="margin: 1rem 0; color: #cbd5e1;">
+          Have questions about payment options or need to discuss custom pricing? Contact our team.
+        </p>
+        <a href="/contact.html" style="display: inline-block; background: #6ee7b7; color: #0f1624; padding: 0.875rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s ease;">
+          Contact Support
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-col">
+          <h4>NCM Solutions</h4>
+          <p>Full-stack Python and web development services for modern businesses.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/services.html">Development Services</a></li>
+            <li><a href="/projects.html">Recent Projects</a></li>
+            <li><a href="/pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/portfolio.html">Portfolio</a></li>
+            <li><a href="/testimonials.html">Testimonials</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="https://github.com/claymiller24" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://linkedin.com/in/claymiller" target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 NCM Solutions™. All rights reserved. | Licensed under Apache License 2.0</p>
+      </div>
+    </footer>
+
+    <script src="script.min.js"></script>
+    <script>
+      let currentAmount = 0;
+      let currentService = '';
+      let stripe, elements, cardElement;
+
+      // Initialize Stripe (use test key for development)
+      const stripeKey = 'pk_test_example'; // Replace with real Stripe key
+      if (stripeKey && stripeKey.includes('pk_')) {
+        stripe = Stripe(stripeKey);
+        elements = stripe.elements();
+        cardElement = elements.create('card', {
+          style: {
+            base: {
+              fontSize: '16px',
+              color: '#f7fafc',
+              '::placeholder': {
+                color: '#94a3b8',
+              },
+            },
+            invalid: {
+              color: '#f56565',
+            },
+          },
+        });
+        cardElement.mount('#card-element');
+      }
+
+      function selectService(element, amount, service) {
+        // Clear previous selection
+        document.querySelectorAll('.service-option').forEach(el => {
+          el.classList.remove('selected');
+          el.querySelector('input').checked = false;
+        });
+        
+        // Set new selection
+        element.classList.add('selected');
+        element.querySelector('input').checked = true;
+        
+        currentAmount = amount;
+        currentService = service;
+        
+        // Update summary
+        document.getElementById('summary-service').textContent = service;
+        document.getElementById('summary-amount').textContent = '$' + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('summary-total').textContent = '$' + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        
+        // Update button text
+        document.querySelectorAll('button[type="submit"]').forEach(btn => {
+          btn.textContent = 'Pay $' + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        });
+
+        if (amount === 0) {
+          document.querySelectorAll('button[type="submit"]').forEach(btn => {
+            btn.textContent = 'Continue';
+            btn.disabled = true;
+          });
+        }
+      }
+
+      function selectPaymentMethod(method, element) {
+        // Clear previous selection
+        document.querySelectorAll('.payment-method').forEach(el => {
+          el.classList.remove('active');
+        });
+        
+        // Set new selection
+        element.classList.add('active');
+        
+        // Hide all forms
+        document.querySelectorAll('.payment-form').forEach(form => {
+          form.classList.remove('active');
+        });
+        
+        // Show selected form
+        const formId = method + '-form';
+        const form = document.getElementById(formId);
+        if (form) {
+          form.classList.add('active');
+        }
+      }
+
+      function switchServiceType(type) {
+        document.querySelectorAll('.tab-content').forEach(el => {
+          el.classList.remove('active');
+        });
+        document.getElementById(type).classList.add('active');
+        
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+      }
+
+      function handleCreditCardPayment(e) {
+        e.preventDefault();
+        
+        if (!currentService) {
+          showError('Please select a service first');
+          return;
+        }
+
+        if (currentAmount === 0) {
+          showError('Cannot process payment of $0. Please select a valid service.');
+          return;
+        }
+
+        // In a real implementation, this would use Stripe to tokenize the card
+        // and send it to your backend for processing
+        
+        showSuccess('Payment processing... Check your email for confirmation.');
+        
+        // Simulate processing
+        setTimeout(() => {
+          console.log('Payment processed:', {
+            service: currentService,
+            amount: currentAmount,
+            method: 'credit_card'
+          });
+        }, 2000);
+      }
+
+      function handlePayPalPayment() {
+        if (!currentService) {
+          showError('Please select a service first');
+          return;
+        }
+
+        if (currentAmount === 0) {
+          const email = document.getElementById('paypal-email').value;
+          if (email) {
+            showSuccess('Please contact us at contact@ncmsolutions.tech to discuss custom pricing.');
+            return;
+          }
+          showError('Please enter your email and select a service');
+          return;
+        }
+
+        const email = document.getElementById('paypal-email').value;
+        if (!email) {
+          showError('Please enter your PayPal email');
+          return;
+        }
+
+        showSuccess('Redirecting to PayPal... Check your email for confirmation.');
+        
+        // In a real implementation, redirect to PayPal
+        console.log('PayPal payment:', {
+          service: currentService,
+          amount: currentAmount,
+          email: email
+        });
+      }
+
+      function handleVenmoPayment() {
+        if (!currentService) {
+          showError('Please select a service first');
+          return;
+        }
+
+        const venmoUser = document.getElementById('venmo-user').value;
+        const email = document.getElementById('venmo-email').value;
+        const note = document.getElementById('venmo-note').value;
+
+        if (!venmoUser || !email) {
+          showError('Please fill in all required fields');
+          return;
+        }
+
+        if (currentAmount === 0) {
+          showSuccess('Please contact us at contact@ncmsolutions.tech to discuss custom pricing.');
+          return;
+        }
+
+        showSuccess(`Send $${currentAmount} to ${venmoUser} with note: "${currentService}". We'll confirm receipt shortly.`);
+        
+        console.log('Venmo payment:', {
+          service: currentService,
+          amount: currentAmount,
+          venmo_user: venmoUser,
+          email: email,
+          note: note
+        });
+      }
+
+      function handleCashAppPayment() {
+        if (!currentService) {
+          showError('Please select a service first');
+          return;
+        }
+
+        const cashAppTag = document.getElementById('cashapp-tag').value;
+        const email = document.getElementById('cashapp-email').value;
+
+        if (!cashAppTag || !email) {
+          showError('Please fill in all required fields');
+          return;
+        }
+
+        if (currentAmount === 0) {
+          showSuccess('Please contact us at contact@ncmsolutions.tech to discuss custom pricing.');
+          return;
+        }
+
+        showSuccess(`Send $${currentAmount} to $ncmsolutions. Confirmation email sent to ${email}.`);
+        
+        console.log('Cash App payment:', {
+          service: currentService,
+          amount: currentAmount,
+          cashapp_tag: cashAppTag,
+          email: email
+        });
+      }
+
+      function handleApplePayment() {
+        if (!currentService) {
+          showError('Please select a service first');
+          return;
+        }
+
+        if (currentAmount === 0) {
+          showError('Cannot process payment of $0. Please select a valid service.');
+          return;
+        }
+
+        showSuccess('Apple Pay processing... Check your email for confirmation.');
+        
+        console.log('Apple Pay:', {
+          service: currentService,
+          amount: currentAmount
+        });
+      }
+
+      function handleGooglePayment() {
+        if (!currentService) {
+          showError('Please select a service first');
+          return;
+        }
+
+        if (currentAmount === 0) {
+          showError('Cannot process payment of $0. Please select a valid service.');
+          return;
+        }
+
+        showSuccess('Google Pay processing... Check your email for confirmation.');
+        
+        console.log('Google Pay:', {
+          service: currentService,
+          amount: currentAmount
+        });
+      }
+
+      function handleBankTransfer() {
+        if (!currentService) {
+          showError('Please select a service first');
+          return;
+        }
+
+        const name = document.getElementById('bank-name').value;
+        const email = document.getElementById('bank-email').value;
+        const phone = document.getElementById('bank-phone').value;
+
+        if (!name || !email) {
+          showError('Please fill in all required fields');
+          return;
+        }
+
+        showSuccess('Bank transfer details sent to ' + email + '. Please allow 3-5 business days for processing.');
+        
+        console.log('Bank transfer request:', {
+          service: currentService,
+          amount: currentAmount,
+          name: name,
+          email: email,
+          phone: phone
+        });
+      }
+
+      function showError(message) {
+        const errorEl = document.getElementById('error-message');
+        errorEl.textContent = '❌ ' + message;
+        errorEl.classList.add('show');
+        
+        setTimeout(() => {
+          errorEl.classList.remove('show');
+        }, 5000);
+      }
+
+      function showSuccess(message) {
+        const successEl = document.getElementById('success-message');
+        successEl.textContent = '✅ ' + message;
+        successEl.classList.add('show');
+        
+        setTimeout(() => {
+          successEl.classList.remove('show');
+        }, 6000);
+      }
+    </script>
+
+    <!--
+     * Licensed by Clay Miller
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *     http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     -->
+  </body>
+</html>
